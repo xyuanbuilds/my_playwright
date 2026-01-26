@@ -3,31 +3,50 @@
  */
 
 import { chromium, type Browser, type Page } from '@playwright/test';
-import type { DetectionResult } from './types.js';
+import type { DetectionResult, MonitorConfig } from './types.js';
 import { formatTime } from '../utils/date-helper.js';
 import { collectPerformanceMetrics } from './performance-collector.js';
 import { checkResources } from './resource-checker.js';
 import { takeScreenshot } from './screenshot-manager.js';
+import { loadMonitorConfig } from './config-loader.js';
 
 /**
  * 检测单个网站
  * @param url 网址
  * @param browser 可选的浏览器实例（用于批量检测时复用）
+ * @param config 可选的配置对象
  * @returns 检测结果
  */
 export async function detectWebsite(
   url: string,
-  browser?: Browser
+  browser?: Browser,
+  config?: MonitorConfig
 ): Promise<DetectionResult> {
   const shouldCloseBrowser = !browser;
-  const browserInstance = browser || (await chromium.launch());
   const detectionTime = formatTime(new Date());
   const timestamp = new Date().toISOString();
+
+  // 加载配置（如果未提供）
+  const monitorConfig = config || await loadMonitorConfig();
+  const viewport = monitorConfig.viewport;
+
+  const browserInstance = browser || (await chromium.launch({
+    headless: monitorConfig.browser?.headless ?? true,
+  }));
 
   let page: Page | null = null;
 
   try {
-    page = await browserInstance.newPage();
+    page = await browserInstance.newPage({
+      viewport: viewport ? {
+        width: viewport.width,
+        height: viewport.height,
+      } : undefined,
+      deviceScaleFactor: viewport?.deviceScaleFactor,
+      isMobile: viewport?.isMobile,
+      hasTouch: viewport?.hasTouch,
+      userAgent: viewport?.userAgent,
+    });
 
     const response = await page.goto(url, {
       waitUntil: 'networkidle',
@@ -59,6 +78,11 @@ export async function detectWebsite(
       performanceMetrics,
       resourceCheck,
       screenshotPath,
+      viewport: viewport ? {
+        width: viewport.width,
+        height: viewport.height,
+        isMobile: viewport.isMobile ?? false,
+      } : undefined,
     };
   } catch (error: any) {
     let screenshotPath: string | undefined;
@@ -78,6 +102,11 @@ export async function detectWebsite(
       error: error.message || 'Unknown error',
       errorType: getErrorType(error),
       screenshotPath,
+      viewport: viewport ? {
+        width: viewport.width,
+        height: viewport.height,
+        isMobile: viewport.isMobile ?? false,
+      } : undefined,
     };
   } finally {
     if (page) {
@@ -93,15 +122,21 @@ export async function detectWebsite(
 /**
  * 批量检测网站
  * @param urls 网址数组
+ * @param config 可选的配置对象
  * @returns 检测结果数组
  */
-export async function detectBatch(urls: string[]): Promise<DetectionResult[]> {
-  const browser = await chromium.launch();
+export async function detectBatch(urls: string[], config?: MonitorConfig): Promise<DetectionResult[]> {
+  // 加载配置（如果未提供）
+  const monitorConfig = config || await loadMonitorConfig();
+
+  const browser = await chromium.launch({
+    headless: monitorConfig.browser?.headless ?? true,
+  });
   const results: DetectionResult[] = [];
 
   try {
     for (const url of urls) {
-      const result = await detectWebsite(url, browser);
+      const result = await detectWebsite(url, browser, monitorConfig);
       results.push(result);
     }
   } finally {

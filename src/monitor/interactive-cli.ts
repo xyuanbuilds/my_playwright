@@ -10,10 +10,19 @@ import { detectBatch } from './detector.js';
 import { saveSingleResult, generateBatchSummary } from './report-generator.js';
 import { formatDate, formatTime } from '../utils/date-helper.js';
 import { isValidUrl } from '../utils/file-helper.js';
+import { loadMonitorConfig } from './config-loader.js';
 
 async function main() {
   console.log(chalk.cyan.bold('\n欢迎使用网站检测工具'));
   console.log(chalk.cyan('━'.repeat(40)));
+
+  // 加载并显示配置
+  const config = await loadMonitorConfig();
+  const viewport = config.viewport;
+  if (viewport) {
+    const deviceType = viewport.isMobile ? '📱 移动端' : '🖥️  桌面';
+    console.log(chalk.cyan(`\n当前视口: ${deviceType} (${viewport.width}x${viewport.height})`));
+  }
 
   const urls: string[] = [];
 

@@ -1,0 +1,13 @@
+{
+  "viewport": {
+    "width": 430,
+    "height": 932,
+    "deviceScaleFactor": 2,
+    "isMobile": true,
+    "hasTouch": true
+  },
+  "browser": {
+    "headless": true,
+    "timeout": 30000
+  }
+}

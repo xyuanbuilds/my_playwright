@@ -7,6 +7,12 @@
 ```
 docs/
 ├── README.md                    # 本文件 - 文档索引
+├── tools/                       # 工具文档
+│   └── monitor.md              # Monitor 网站检测工具
+├── config/                      # 配置相关文档
+│   ├── viewport-config.md       # 视口配置说明
+│   ├── monitor-config.md        # Monitor 工具配置
+│   └── ...
 ├── mcp/                         # MCP 服务器文档
 │   ├── README.md               # MCP 文档索引
 │   └── playwriter.md           # Playwriter MCP 服务器
@@ -21,7 +27,7 @@ docs/
 
 ### 核心功能
 
-- **[检测工具文档](../MONITOR_README.md)** - 通用网站检测工具完整指南
+- **[Monitor 检测工具](tools/monitor.md)** - 通用网站检测工具完整指南
   - 功能特性
   - 使用方法
   - 报告格式
@@ -41,6 +47,19 @@ docs/
   - 使用方法
   - 工作原理
 
+### 配置指南
+
+- **[视口配置](config/viewport-config.md)** - Monitor 工具视口配置说明
+  - PC 视口配置
+  - 移动端视口配置
+  - 自定义尺寸配置
+  - 配置优先级
+
+- **[Monitor 工具配置](config/monitor-config.md)** - Monitor 工具完整配置指南
+  - 浏览器配置
+  - 超时设置
+  - 截图配置
+
 ### 高级指南
 
 - **[整合使用指南](integration-guide.md)** - 三大工具协同工作流程
@@ -56,7 +75,7 @@ docs/
 ## 🎯 按使用场景查找
 
 ### 场景 1: 我想批量检测网站性能
-→ 阅读 [检测工具文档](../MONITOR_README.md)
+→ 阅读 [Monitor 检测工具](tools/monitor.md)
 
 ### 场景 2: 我需要在真实浏览器中调试
 → 阅读 [Playwriter 文档](mcp/playwriter.md)
@@ -89,13 +108,15 @@ docs/
 ### 添加新文档
 
 1. 根据文档类型选择目录：
-   - MCP 相关 → `docs/mcp/`
-   - 整合指南 → `docs/`
-   - 工具文档 → 项目根目录
+   - **配置相关** → `docs/config/` (视口、Monitor工具、环境变量等配置说明)
+   - **MCP 相关** → `docs/mcp/` (MCP 服务器、集成、配置)
+   - **整合指南** → `docs/` (跨工具使用指南)
+   - **工具文档** → 项目根目录 (MONITOR_README.md 等)
 
 2. 创建 Markdown 文件
 
 3. 更新相应的索引文件：
+   - 配置文档 → 更新本文件的配置部分
    - MCP 文档 → 更新 `docs/mcp/README.md`
    - 其他文档 → 更新本文件
 
@@ -162,6 +183,7 @@ docs/
 ## 快速导航
 
 - [← 返回项目主页](../README_NEW.md)
+- [→ Monitor 工具](tools/monitor.md)
+- [→ 视口配置](config/viewport-config.md)
 - [→ MCP 文档](mcp/README.md)
 - [→ 整合指南](integration-guide.md)
-- [→ 检测工具](../MONITOR_README.md)

@@ -55,6 +55,15 @@ export interface ResourceCheckResult {
 export type DetectionStatus = 'success' | 'failed';
 
 /**
+ * 视口信息
+ */
+export interface ViewportInfo {
+  width: number;
+  height: number;
+  isMobile: boolean;
+}
+
+/**
  * 单个网址检测结果
  */
 export interface DetectionResult {
@@ -69,6 +78,7 @@ export interface DetectionResult {
   screenshotPath?: string;
   error?: string;
   errorType?: string;
+  viewport?: ViewportInfo;
 }
 
 /**
@@ -125,4 +135,32 @@ export interface DetectionIndexItem {
 export interface DailyIndex {
   date: string;
   detections: DetectionIndexItem[];
+}
+
+/**
+ * 视口配置
+ */
+export interface ViewportConfig {
+  width: number;
+  height: number;
+  deviceScaleFactor?: number;
+  isMobile?: boolean;
+  hasTouch?: boolean;
+  userAgent?: string;
+}
+
+/**
+ * 浏览器配置
+ */
+export interface BrowserConfig {
+  headless?: boolean;
+  timeout?: number;
+}
+
+/**
+ * Monitor工具完整配置
+ */
+export interface MonitorConfig {
+  viewport?: ViewportConfig;
+  browser?: BrowserConfig;
 }

@@ -1,4 +1,4 @@
-# 网站自动化检测工具
+# Monitor 网站自动化检测工具
 
 这是一个基于 Playwright 的通用网站自动化检测工具，支持交互式命令行输入网址、批量检测、性能指标收集、资源完整性检查和自动截图。
 
@@ -19,6 +19,7 @@
 - **自动截图**：全屏截图，按日期组织
 - **结构化报告**：JSON 格式报告，易于解析和分析
 - **错误处理**：完善的错误处理机制，检测失败不影响整体流程
+- **视口配置**：支持 PC、移动端等多种视口配置
 
 ## 目录结构
 
@@ -28,6 +29,7 @@
 │   ├── monitor/                        # 监测模块
 │   │   ├── interactive-cli.ts          # 交互式入口
 │   │   ├── detector.ts                 # 核心检测逻辑
+│   │   ├── config-loader.ts            # 配置加载器
 │   │   ├── performance-collector.ts    # 性能指标收集
 │   │   ├── resource-checker.ts         # 资源完整性检查
 │   │   ├── screenshot-manager.ts       # 截图管理
@@ -36,6 +38,7 @@
 │   └── utils/                          # 工具函数
 │       ├── date-helper.ts              # 日期格式化
 │       └── file-helper.ts              # 文件操作
+├── monitor.config.json                 # 配置文件（可选）
 ├── detection-records/                  # 检测记录（按日期）
 │   └── YYYY-MM-DD/
 │       ├── HHmmss-domain.json          # 单个网址检测结果
@@ -68,6 +71,8 @@ pnpm run monitor
 ```
 欢迎使用网站检测工具
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+当前视口: 🖥️  桌面 (1920x1080)
 
 请输入要检测的网址（输入空行完成添加）:
 > https://example.com
@@ -119,6 +124,11 @@ pnpm run monitor
   "status": "success",
   "httpStatus": 200,
   "loadTime": 2345,
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "isMobile": false
+  },
   "performanceMetrics": {
     "navigationStart": 0,
     "domContentLoaded": 1234,
@@ -180,8 +190,45 @@ pnpm run monitor
 
 ## 配置说明
 
-当前检测配置：
-- **超时时间**：30 秒（页面导航超时）
+Monitor 工具支持通过 `monitor.config.json` 配置文件自定义检测行为。
+
+详细配置说明请参考：
+
+### 📋 配置指南
+
+- **[视口配置详解](../config/viewport-config.md)** - PC、移动端、自定义尺寸
+- **[Monitor 工具配置](../config/monitor-config.md)** - 浏览器行为、超时等
+
+### 快速配置示例
+
+**PC 视口（默认）**：
+```json
+{
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  }
+}
+```
+
+**移动端视口（iPhone 12）**：
+```json
+{
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 3,
+    "isMobile": true,
+    "hasTouch": true
+  }
+}
+```
+
+### 默认配置
+
+如果没有 `monitor.config.json` 文件，工具会使用以下默认配置：
+- **视口**：PC 视口 (1920x1080)
+- **超时时间**：30 秒
 - **等待条件**：networkidle（网络空闲）
 - **截图模式**：全屏截图
 - **并发模式**：串行执行（批量检测时逐个进行）
@@ -212,12 +259,11 @@ pnpm run monitor
 
 可以通过以下方式扩展工具：
 
-1. **配置文件**：添加 config.json 支持自定义超时、并发数等参数
-2. **多格式报告**：支持导出 CSV、HTML、Markdown 格式
-3. **定时任务**：集成 cron 实现定时检测
-4. **数据可视化**：生成性能趋势图表
-5. **自定义检测规则**：支持自定义断言和检测逻辑
-6. **通知功能**：检测完成后发送邮件或消息通知
+1. **多格式报告**：支持导出 CSV、HTML、Markdown 格式
+2. **定时任务**：集成 cron 实现定时检测
+3. **数据可视化**：生成性能趋势图表
+4. **自定义检测规则**：支持自定义断言和检测逻辑
+5. **通知功能**：检测完成后发送邮件或消息通知
 
 ## 技术栈
 
@@ -227,6 +273,14 @@ pnpm run monitor
 - TypeScript 5.x - 类型安全
 - Node.js 20+ - 运行环境
 
-## 许可证
+## 相关文档
 
-ISC
+- [视口配置指南](../config/viewport-config.md)
+- [Monitor 完整配置](../config/monitor-config.md)
+- [项目文档中心](../README.md)
+- [项目规范](../../DOCS_ORGANIZATION.md)
+
+---
+
+**最后更新**: 2026-01-26
+**维护者**: 项目团队
