@@ -56,21 +56,21 @@ export default defineConfig({
       },
     },
 
-    {
-      name: "Mobile Safari",
-      use: {
-        ...devices["iPhone 12"],
-        viewport: { width: 390, height: 844 },
-      },
-    },
+    // {
+    //   name: "Mobile Safari",
+    //   use: {
+    //     ...devices["iPhone 12"],
+    //     viewport: { width: 390, height: 844 },
+    //   },
+    // },
 
-    // 桌面浏览器配置（可选）
-    {
-      name: "Desktop Chrome",
-      use: {
-        ...devices["Desktop Chrome"],
-      },
-    },
+    // // 桌面浏览器配置（可选）
+    // {
+    //   name: "Desktop Chrome",
+    //   use: {
+    //     ...devices["Desktop Chrome"],
+    //   },
+    // },
   ],
 
   // Web Server 配置（如果需要启动本地服务器）
