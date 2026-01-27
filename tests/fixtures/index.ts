@@ -2,6 +2,7 @@ import { test as base } from "@playwright/test";
 import { URLQueryChecker } from "./helpers/url-query-checker";
 import { PerformanceMonitor } from "./helpers/performance-monitor";
 import { WebSocketMonitor } from "./helpers/websocket-monitor";
+import { ApiMonitor } from "./helpers/api-monitor";
 
 /**
  * 自定义 Fixtures 类型定义
@@ -24,6 +25,12 @@ type CustomFixtures = {
    * 用于监控 WebSocket 连接状态和消息
    */
   websocket: WebSocketMonitor;
+
+  /**
+   * API 监控器
+   * 用于监控和验证 HTTP API 请求/响应
+   */
+  apiMonitor: ApiMonitor;
 };
 
 /**
@@ -58,6 +65,17 @@ export const test = base.extend<CustomFixtures>({
     // 测试结束后停止监控
     monitor.stopMonitoring();
   },
+
+  /**
+   * API 监控器 Fixture
+   * 手动调用 start() 或 track() 开始监控
+   */
+  apiMonitor: async ({ page }, use) => {
+    const monitor = new ApiMonitor(page);
+    await use(monitor);
+    // 测试结束后停止监控
+    await monitor.stop();
+  },
 });
 
 /**
@@ -71,6 +89,7 @@ export { expect } from "@playwright/test";
 export { URLQueryChecker } from "./helpers/url-query-checker";
 export { PerformanceMonitor } from "./helpers/performance-monitor";
 export { WebSocketMonitor } from "./helpers/websocket-monitor";
+export { ApiMonitor } from "./helpers/api-monitor";
 
 /**
  * 导出工具函数

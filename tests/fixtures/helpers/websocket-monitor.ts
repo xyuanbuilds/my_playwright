@@ -4,7 +4,7 @@ import { Page, expect } from "@playwright/test";
  * WebSocket 事件信息
  */
 export interface WebSocketEvent {
-  type: "open" | "close" | "error" | "message";
+  type: "open" | "close" | "error" | "message" | "send";
   timestamp: number;
   url?: string;
   data?: any;
@@ -21,6 +21,7 @@ export interface WebSocketConnection {
   readyState: number;
   events: WebSocketEvent[];
   messages: any[];
+  sentMessages: any[];
   createdAt: number;
 }
 
@@ -54,7 +55,7 @@ export class WebSocketMonitor {
       // 创建 WebSocket 包装器
       (window as any).WebSocket = function (
         url: string,
-        protocols?: string | string[]
+        protocols?: string | string[],
       ) {
         const ws = new OriginalWebSocket(url, protocols);
 
@@ -64,6 +65,7 @@ export class WebSocketMonitor {
           readyState: ws.readyState,
           events: [],
           messages: [],
+          sentMessages: [],
           createdAt: Date.now(),
         };
 
@@ -72,6 +74,20 @@ export class WebSocketMonitor {
           (window as any).__wsConnections = new Map();
         }
         (window as any).__wsConnections.set(url, connectionInfo);
+
+        // 拦截 send 方法
+        const originalSend = ws.send.bind(ws);
+        ws.send = function (data: any) {
+          const sendData = typeof data === "string" ? data : "[Binary Data]";
+          connectionInfo.events.push({
+            type: "send",
+            timestamp: Date.now(),
+            data: sendData,
+          });
+          connectionInfo.sentMessages.push(sendData);
+          console.log(`[WebSocket] Message sent to ${url}:`, sendData);
+          return originalSend(data);
+        };
 
         // 监听 open 事件
         ws.addEventListener("open", (event) => {
@@ -87,9 +103,7 @@ export class WebSocketMonitor {
         // 监听 message 事件
         ws.addEventListener("message", (event) => {
           const data =
-            typeof event.data === "string"
-              ? event.data
-              : "[Binary Data]";
+            typeof event.data === "string" ? event.data : "[Binary Data]";
           connectionInfo.events.push({
             type: "message",
             timestamp: Date.now(),
@@ -178,7 +192,7 @@ export class WebSocketMonitor {
    */
   async waitForConnection(
     urlPattern: string | RegExp,
-    timeout = 10000
+    timeout = 10000,
   ): Promise<WebSocketConnection> {
     const startTime = Date.now();
 
@@ -203,9 +217,7 @@ export class WebSocketMonitor {
       await this.page.waitForTimeout(100);
     }
 
-    throw new Error(
-      `等待 WebSocket 连接超时: ${urlPattern} (${timeout}ms)`
-    );
+    throw new Error(`等待 WebSocket 连接超时: ${urlPattern} (${timeout}ms)`);
   }
 
   /**
@@ -214,7 +226,7 @@ export class WebSocketMonitor {
   async waitForMessage(
     urlPattern: string | RegExp,
     messagePattern?: string | RegExp,
-    timeout = 10000
+    timeout = 10000,
   ): Promise<string> {
     const startTime = Date.now();
 
@@ -270,18 +282,13 @@ export class WebSocketMonitor {
 
       if (matches) {
         const hasOpenEvent = conn.events.some((e) => e.type === "open");
-        expect(
-          hasOpenEvent,
-          `WebSocket 应该已连接: ${url}`
-        ).toBe(true);
+        expect(hasOpenEvent, `WebSocket 应该已连接: ${url}`).toBe(true);
         found = true;
         break;
       }
     }
 
-    expect(found, `未找到匹配的 WebSocket 连接: ${urlPattern}`).toBe(
-      true
-    );
+    expect(found, `未找到匹配的 WebSocket 连接: ${urlPattern}`).toBe(true);
   }
 
   /**
@@ -298,10 +305,7 @@ export class WebSocketMonitor {
 
       if (matches) {
         const hasCloseEvent = conn.events.some((e) => e.type === "close");
-        expect(
-          hasCloseEvent,
-          `WebSocket 应该已关闭: ${url}`
-        ).toBe(true);
+        expect(hasCloseEvent, `WebSocket 应该已关闭: ${url}`).toBe(true);
         return;
       }
     }
@@ -315,7 +319,7 @@ export class WebSocketMonitor {
    */
   async expectMessageReceived(
     urlPattern: string | RegExp,
-    messagePattern?: string | RegExp
+    messagePattern?: string | RegExp,
   ): Promise<void> {
     await this.getAllConnections();
 
@@ -328,7 +332,7 @@ export class WebSocketMonitor {
       if (urlMatches) {
         expect(
           conn.messages.length,
-          `应该收到至少一条消息: ${url}`
+          `应该收到至少一条消息: ${url}`,
         ).toBeGreaterThan(0);
 
         if (messagePattern) {
@@ -341,7 +345,7 @@ export class WebSocketMonitor {
 
           expect(
             hasMatchingMessage,
-            `应该收到匹配的消息: ${messagePattern}`
+            `应该收到匹配的消息: ${messagePattern}`,
           ).toBe(true);
         }
         return;
@@ -360,7 +364,7 @@ export class WebSocketMonitor {
   }
 
   /**
-   * 获取所有消息
+   * 获取所有接收的消息
    */
   async getAllMessages(urlPattern?: string | RegExp): Promise<any[]> {
     await this.getAllConnections();
@@ -386,6 +390,32 @@ export class WebSocketMonitor {
   }
 
   /**
+   * 获取所有发送的消息
+   */
+  async getAllSentMessages(urlPattern?: string | RegExp): Promise<any[]> {
+    await this.getAllConnections();
+
+    const allSentMessages: any[] = [];
+
+    for (const [url, conn] of this.connections.entries()) {
+      if (!urlPattern) {
+        allSentMessages.push(...conn.sentMessages);
+      } else {
+        const matches =
+          typeof urlPattern === "string"
+            ? url.includes(urlPattern)
+            : urlPattern.test(url);
+
+        if (matches) {
+          allSentMessages.push(...conn.sentMessages);
+        }
+      }
+    }
+
+    return allSentMessages;
+  }
+
+  /**
    * 打印连接报告
    */
   async logReport(): Promise<void> {
@@ -401,18 +431,21 @@ export class WebSocketMonitor {
         console.log(`\n[连接] ${url}`);
         console.log(`  创建时间: ${new Date(conn.createdAt).toISOString()}`);
         console.log(`  事件数: ${conn.events.length}`);
-        console.log(`  消息数: ${conn.messages.length}`);
+        console.log(`  接收消息数: ${conn.messages.length}`);
+        console.log(`  发送消息数: ${conn.sentMessages.length}`);
 
         const openEvent = conn.events.find((e) => e.type === "open");
         const closeEvent = conn.events.find((e) => e.type === "close");
         const errorEvents = conn.events.filter((e) => e.type === "error");
 
         if (openEvent) {
-          console.log(`  ✅ 已连接 (${new Date(openEvent.timestamp).toISOString()})`);
+          console.log(
+            `  ✅ 已连接 (${new Date(openEvent.timestamp).toISOString()})`,
+          );
         }
         if (closeEvent) {
           console.log(
-            `  ❌ 已关闭 (code: ${closeEvent.code}, reason: ${closeEvent.reason || "无"})`
+            `  ❌ 已关闭 (code: ${closeEvent.code}, reason: ${closeEvent.reason || "无"})`,
           );
         }
         if (errorEvents.length > 0) {
@@ -420,7 +453,14 @@ export class WebSocketMonitor {
         }
 
         if (conn.messages.length > 0) {
-          console.log(`  最新消息: ${conn.messages[conn.messages.length - 1]}`);
+          console.log(
+            `  最新接收消息: ${conn.messages[conn.messages.length - 1]}`,
+          );
+        }
+        if (conn.sentMessages.length > 0) {
+          console.log(
+            `  最新发送消息: ${conn.sentMessages[conn.sentMessages.length - 1]}`,
+          );
         }
       });
     }
