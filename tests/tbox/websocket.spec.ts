@@ -9,7 +9,7 @@ const domainsData: DomainsFile = JSON.parse(
   fs.readFileSync(domainConfigPath, "utf-8"),
 );
 
-test.describe("WebSocket 连接测试", () => {
+test.describe("WebSocket 测试", () => {
   // 为每个域名创建测试
   domainsData.domains.forEach((domain) => {
     if (!domain.queryUrl) {
@@ -19,22 +19,27 @@ test.describe("WebSocket 连接测试", () => {
       return;
     }
 
-    test(`${domain.name} - 默认 query`, async ({ page, websocket }) => {
+    test(`${domain.name} - 完整测试`, async ({ page, websocket }) => {
+      console.log(`\n========== 开始测试: ${domain.name} ==========\n`);
+
+      // ========== 第一部分：默认 query 验证 ==========
+      console.log("\n【第一部分：默认 query 验证】\n");
+
       // 1. 访问页面
-      console.log("\n[步骤 1] 访问页面");
+      console.log("[步骤 1] 访问页面");
       await page.goto(domain.queryUrl!, {
         waitUntil: "domcontentloaded",
         timeout: 60000,
       });
       console.log("✅ 页面加载完成");
 
-      // 3. 等待 WebSocket 初始化
+      // 2. 等待 WebSocket 初始化
       console.log("\n[步骤 2] 等待 WebSocket 初始化");
       await page.waitForTimeout(3000);
 
-      // 4. WebSocket 监控
+      // 3. WebSocket 监控
       console.log("\n[步骤 3] WebSocket 监控");
-      const allConnections = await websocket.getAllConnections();
+      let allConnections = await websocket.getAllConnections();
       const tboxConnections = Array.from(allConnections.entries()).filter(
         ([url]) => url.startsWith("wss://open.tbox.alipay.com/"),
       );
@@ -50,7 +55,7 @@ test.describe("WebSocket 连接测试", () => {
       // 打印连接报告
       await websocket.logReport();
 
-      // 5. 等待接收消息
+      // 4. 等待接收消息
       console.log("\n[步骤 4] 等待接收消息");
       await page.waitForTimeout(5000);
 
@@ -58,53 +63,24 @@ test.describe("WebSocket 连接测试", () => {
         /wss:\/\/open\.tbox\.alipay\.com\//,
       );
       console.log(`收到消息总数: ${allMessages.length}`);
-      // 验证至少收到一条消息
-      expect(
-        allMessages.length,
-        `${domain.name} 应该至少收到一条 WebSocket 消息`,
-      ).toBeGreaterThan(0);
 
-      // 打印前 5 条消息
-      console.log(`\n消息列表 (最多显示 5 条):`);
-      const messagesToShow = allMessages.slice(0, 5);
-      messagesToShow.forEach((msg, index) => {
-        const msgStr = typeof msg === "string" ? msg : JSON.stringify(msg);
-        console.log(`[${index + 1}] ${msgStr.substring(0, 200)}`);
-      });
-
-      // 等待页面 UI 变动结束 5 秒再截图
-      await waitForUIStableWithLog(page, {
-        logPrefix: "\n[步骤 5]",
-        maxWaitTime: 5000,
-      });
-
-      console.log(`\n========== 完整测试结束: ${domain.name} ==========\n`);
-
-      // 最终断言
-      expect(wsCount).toBeGreaterThan(0);
-      // 消息可能为 0（连接建立后不一定立即有消息）
-      console.log(`✅ 消息验证: ${allMessages.length} 条消息`);
-    });
-
-    test(`${domain.name} - 多轮对话`, async ({ page, websocket }) => {
-      // 1. 访问页面
-      console.log("\n[步骤 1] 访问页面");
-      await page.goto(domain.queryUrl!, {
-        waitUntil: "domcontentloaded",
-        timeout: 60000,
-      });
-      console.log("✅ 页面加载完成");
-
-      // 2. 等待第一轮对话完成（UI 稳定）
-      console.log("\n[步骤 2] 等待第一轮对话完成（UI 稳定）");
+      // 5. 等待第一轮对话完成（UI 稳定）
+      console.log("\n[步骤 5] 等待第一轮对话完成（UI 稳定）");
       await waitForUIStableWithLog(page, {
         logPrefix: "[waitForUIStable]",
         maxWaitTime: 5000,
       });
 
-      // 3. 获取第一轮对话的消息统计
-      console.log("\n[步骤 3] 第一轮对话完成，获取消息统计");
-      let allConnections = await websocket.getAllConnections();
+      console.log(
+        `\n✅ 默认 query 验证完成：连接数 ${wsCount}，消息数 ${allMessages.length}\n`,
+      );
+
+      // ========== 第二部分：多轮对话测试 ==========
+      console.log("\n【第二部分：多轮对话测试】\n");
+
+      // 6. 获取第一轮对话的消息统计
+      console.log("[步骤 6] 第一轮对话完成，获取消息统计");
+      allConnections = await websocket.getAllConnections();
       let tboxConnection = Array.from(allConnections.entries()).find(([url]) =>
         url.includes("open.tbox.alipay.com"),
       );
@@ -135,15 +111,15 @@ test.describe("WebSocket 连接测试", () => {
       }
 
       // 截图：第一轮对话完成后
-      console.log("📸 截图：第一轮对话");
+      console.log("\n📸 截图：第一轮对话");
       await expect(page).toHaveScreenshot(`${domain.name}-第一轮对话.png`, {
         fullPage: true,
         maxDiffPixelRatio: 0.02,
         animations: "disabled",
       });
 
-      // 4. 查找输入框
-      console.log("\n[步骤 4] 查找输入框");
+      // 7. 查找输入框
+      console.log("\n[步骤 7] 查找输入框");
 
       // 尝试多种选择器
       const inputSelectors = [
@@ -167,27 +143,27 @@ test.describe("WebSocket 连接测试", () => {
         throw new Error("找不到输入框");
       }
 
-      // 5. 输入第二轮消息
+      // 8. 输入第二轮消息
       const secondRoundMessage = "附近停车场";
-      console.log(`\n[步骤 5] 输入'${secondRoundMessage}'`);
+      console.log(`\n[步骤 8] 输入'${secondRoundMessage}'`);
       await input.fill(secondRoundMessage);
       await page.waitForTimeout(500); // 等待输入完成
       console.log("✅ 输入完成");
 
-      // 6. 发送消息（按 Enter 键）
-      console.log("\n[步骤 6] 按 Enter 键发送消息");
+      // 9. 发送消息（按 Enter 键）
+      console.log("\n[步骤 9] 按 Enter 键发送消息");
       await input.press("Enter");
       console.log("✅ 发送消息");
 
-      // 7. 等待第二轮对话完成
-      console.log("\n[步骤 7] 等待第二轮对话完成");
+      // 10. 等待第二轮对话完成
+      console.log("\n[步骤 10] 等待第二轮对话完成");
       await waitForUIStableWithLog(page, {
         logPrefix: "[waitForUIStable]",
         maxWaitTime: 10000,
       });
 
-      // 8. 获取第二轮对话的消息统计
-      console.log("\n[步骤 8] 获取第二轮对话后的消息统计");
+      // 11. 获取第二轮对话的消息统计
+      console.log("\n[步骤 11] 获取第二轮对话后的消息统计");
       allConnections = await websocket.getAllConnections();
       tboxConnection = Array.from(allConnections.entries()).find(([url]) =>
         url.includes("open.tbox.alipay.com"),
@@ -209,9 +185,9 @@ test.describe("WebSocket 连接测试", () => {
         `新增接收消息: ${secondRoundReceivedCount - firstRoundReceivedCount}`,
       );
 
-      // 9. 显示第二轮发送的消息并对比 session_id
+      // 12. 显示第二轮发送的消息并对比 session_id
       if (secondRoundSentCount > firstRoundSentCount) {
-        console.log(`\n[步骤 9] 第二轮发送的消息:`);
+        console.log(`\n[步骤 12] 第二轮发送的消息:`);
         const newSentMessages =
           tboxConn.sentMessages.slice(firstRoundSentCount);
 
@@ -258,7 +234,7 @@ test.describe("WebSocket 连接测试", () => {
       }
 
       // 截图：第二轮对话完成后
-      console.log(`📸 截图：第二轮对话-${secondRoundMessage}`);
+      console.log(`\n📸 截图：第二轮对话-${secondRoundMessage}`);
       await expect(page).toHaveScreenshot(
         `${domain.name}-第二轮对话-${secondRoundMessage}.png`,
         {
@@ -268,7 +244,14 @@ test.describe("WebSocket 连接测试", () => {
         },
       );
 
-      // 断言：验证多轮对话成功
+      // ========== 最终验证 ==========
+      console.log("\n【最终验证】\n");
+
+      // 验证默认 query
+      expect(wsCount, "应该有 WebSocket 连接").toBeGreaterThan(0);
+      console.log(`✅ 默认 query 验证通过`);
+
+      // 验证多轮对话
       expect(secondRoundSentCount, "第二轮应该发送了新消息").toBeGreaterThan(
         firstRoundSentCount,
       );
@@ -276,8 +259,9 @@ test.describe("WebSocket 连接测试", () => {
         secondRoundReceivedCount,
         "第二轮应该接收了新消息",
       ).toBeGreaterThan(firstRoundReceivedCount);
+      console.log(`✅ 多轮对话验证通过`);
 
-      console.log(`\n✅ 多轮对话测试完成`);
+      console.log(`\n========== 完整测试结束: ${domain.name} ==========\n`);
     });
   });
 });

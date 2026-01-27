@@ -3,6 +3,7 @@ import { URLQueryChecker } from "./helpers/url-query-checker";
 import { PerformanceMonitor } from "./helpers/performance-monitor";
 import { WebSocketMonitor } from "./helpers/websocket-monitor";
 import { ApiMonitor } from "./helpers/api-monitor";
+import { PlatformContext } from "./helpers/platform-context";
 
 /**
  * 自定义 Fixtures 类型定义
@@ -31,6 +32,12 @@ type CustomFixtures = {
    * 用于监控和验证 HTTP API 请求/响应
    */
   apiMonitor: ApiMonitor;
+
+  /**
+   * 平台上下文管理器
+   * 用于创建和管理不同平台（支付宝、微信、H5）的浏览器上下文
+   */
+  platformContext: PlatformContext;
 };
 
 /**
@@ -76,6 +83,17 @@ export const test = base.extend<CustomFixtures>({
     // 测试结束后停止监控
     await monitor.stop();
   },
+
+  /**
+   * 平台上下文管理器 Fixture
+   * 用于创建和管理不同平台的浏览器上下文
+   */
+  platformContext: async ({ browser }, use) => {
+    const platformContext = new PlatformContext(browser);
+    await use(platformContext);
+    // 测试结束后清理所有上下文
+    await platformContext.cleanup();
+  },
 });
 
 /**
@@ -90,6 +108,12 @@ export { URLQueryChecker } from "./helpers/url-query-checker";
 export { PerformanceMonitor } from "./helpers/performance-monitor";
 export { WebSocketMonitor } from "./helpers/websocket-monitor";
 export { ApiMonitor } from "./helpers/api-monitor";
+export {
+  PlatformContext,
+  PLATFORMS,
+  type PlatformConfig,
+  type PlatformType,
+} from "./helpers/platform-context";
 
 /**
  * 导出工具函数
