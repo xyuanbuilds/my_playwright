@@ -4,6 +4,7 @@ import { PerformanceMonitor } from "./helpers/performance-monitor";
 import { WebSocketMonitor } from "./helpers/websocket-monitor";
 import { ApiMonitor } from "./helpers/api-monitor";
 import { PlatformContext } from "./helpers/platform-context";
+import { MyAgent } from "./helpers/my-agent";
 
 /**
  * 自定义 Fixtures 类型定义
@@ -38,6 +39,12 @@ type CustomFixtures = {
    * 用于创建和管理不同平台（支付宝、微信、H5）的浏览器上下文
    */
   platformContext: PlatformContext;
+
+  /**
+   * 智能体对话助手
+   * 用于简化与智能体对话页面的交互操作
+   */
+  myAgent: MyAgent;
 };
 
 /**
@@ -94,6 +101,15 @@ export const test = base.extend<CustomFixtures>({
     // 测试结束后清理所有上下文
     await platformContext.cleanup();
   },
+
+  /**
+   * 智能体对话助手 Fixture
+   * 用于简化与智能体对话页面的交互操作
+   */
+  myAgent: async ({ page }, use) => {
+    const agent = new MyAgent(page);
+    await use(agent);
+  },
 });
 
 /**
@@ -114,6 +130,7 @@ export {
   type PlatformConfig,
   type PlatformType,
 } from "./helpers/platform-context";
+export { MyAgent, type MyAgentOptions } from "./helpers/my-agent";
 
 /**
  * 导出工具函数

@@ -19,7 +19,7 @@ test.describe("WebSocket 测试", () => {
       return;
     }
 
-    test(`${domain.name} - 完整测试`, async ({ page, websocket }) => {
+    test(`${domain.name} - 完整测试`, async ({ page, websocket, myAgent }) => {
       console.log(`\n========== 开始测试: ${domain.name} ==========\n`);
 
       // ========== 第一部分：默认 query 验证 ==========
@@ -118,42 +118,10 @@ test.describe("WebSocket 测试", () => {
         animations: "disabled",
       });
 
-      // 7. 查找输入框
-      console.log("\n[步骤 7] 查找输入框");
-
-      // 尝试多种选择器
-      const inputSelectors = [
-        'input[type="text"]',
-        'input[placeholder*="输入"]',
-        'input[placeholder*="问"]',
-      ];
-
-      let input = null;
-      for (const selector of inputSelectors) {
-        const element = page.locator(selector).first();
-        const count = await element.count();
-        if (count > 0 && (await element.isVisible())) {
-          input = element;
-          console.log(`✅ 找到输入框: ${selector}`);
-          break;
-        }
-      }
-
-      if (!input) {
-        throw new Error("找不到输入框");
-      }
-
-      // 8. 输入第二轮消息
+      // 7-9. 发送第二轮消息
       const secondRoundMessage = "附近停车场";
-      console.log(`\n[步骤 8] 输入'${secondRoundMessage}'`);
-      await input.fill(secondRoundMessage);
-      await page.waitForTimeout(500); // 等待输入完成
-      console.log("✅ 输入完成");
-
-      // 9. 发送消息（按 Enter 键）
-      console.log("\n[步骤 9] 按 Enter 键发送消息");
-      await input.press("Enter");
-      console.log("✅ 发送消息");
+      console.log(`\n[步骤 7-9] 发送第二轮消息`);
+      await myAgent.send(secondRoundMessage);
 
       // 10. 等待第二轮对话完成
       console.log("\n[步骤 10] 等待第二轮对话完成");
