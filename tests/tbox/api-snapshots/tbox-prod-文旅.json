@@ -1,0 +1,1143 @@
+[
+  {
+    "index": 0,
+    "url": "https://open.tbox.alipay.com/agent/auth",
+    "method": "POST",
+    "status": 0,
+    "duration": 52
+  },
+  {
+    "index": 1,
+    "url": "https://open.tbox.alipay.com/agent/auth",
+    "method": "POST",
+    "status": 200,
+    "duration": 230,
+    "responseBody": {
+      "hostName": "tagtgw-01-tagtgwprodgzcrql00b0-2",
+      "result": "00a42481edq71Bxd80MI6oXOM",
+      "success": true,
+      "traceId": "0a424b6b17700489439754470e027f"
+    }
+  },
+  {
+    "index": 2,
+    "url": "https://open.tbox.alipay.com/agent/v1/plugin/proxy",
+    "method": "POST",
+    "status": 200,
+    "duration": 276,
+    "responseBody": {
+      "hostName": "agtgw-43-10",
+      "result": {
+        "resultCode": 200,
+        "resultDesc": "operation success",
+        "resultObj": {
+          "currentPage": 1,
+          "data": [
+            {
+              "answers": [
+                {
+                  "answer": "成功为您找到附近停车场，包括正义路酒店地面停车场（距110米）、北京东交民巷饭店写字楼停车场（距116米）等，建议您导航前往 🚗",
+                  "endTime": "2026-01-27 20:13:35",
+                  "lane": "output_isn9lm_text_1.$.contenttext",
+                  "mediaType": "text",
+                  "order": 2,
+                  "startTime": "2026-01-27 20:13:34"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20250409zBpd00022994",
+                      "tool_card_config_relation_id": "20250523lhbF00315941",
+                      "build_status": "PUBLISHED",
+                      "card_type": "tool",
+                      "card_id": "20250409Kx3q00021186",
+                      "card_resource": {
+                        "PC": {
+                          "package_version": "0.0.0",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/aa/0.0.0/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "aa"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "package_version": "",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm///dist/umd-named/index.umd.min.js",
+                          "package_name": ""
+                        },
+                        "CUBE": {
+                          "cube_template_id": "CHAT_LLM_myassistant_nearby_recommend"
+                        },
+                        "H5": {
+                          "entry": "MultiPoiSelect",
+                          "package_version": "*",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_tbox-inc-agent-ui/*/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "@alipay/tbox-inc-agent-ui",
+                          "type": "0"
+                        }
+                      }
+                    },
+                    "data": {
+                      "result": "$",
+                      "rowType": "MULTI_POI_SELECT",
+                      "innerText": "相关推荐",
+                      "$$__metaInfo": {
+                        "messageId": "20260127yX6F47693235",
+                        "lane": "output_isn9lm_card_1"
+                      },
+                      "messageId": "20260127yX6F47693235",
+                      "needImg": true,
+                      "logo": "https://mdn.alipayobjects.com/agt_content/afts/img/BBU2TpVQbyEAAAAAQvAAAAgAegs9AAFr/original?t=6ujgOoDZP_fboE5W6GL86pv5xVnoICfB2N_zjSdvJrgDAAAAZAABPQsAAAAA",
+                      "list": [
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://store.is.autonavi.com/showpic/48d194fdee963cc8dae89e22feb6bba3",
+                          "address": "正义路甲4号正义路华纺酒店",
+                          "distance": "110m",
+                          "latitude": "39.903227",
+                          "title": "正义路酒店地面停车场",
+                          "desc": "正义路甲4号正义路华纺酒店",
+                          "distanceCount": 110,
+                          "longitude": "116.407118"
+                        },
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://mdn.alipayobjects.com/huamei_nzq4hr/afts/img/A*k50VTqanYo0AAAAAAAAAAAAADl-hAQ/original",
+                          "address": "正义路与东交民巷交叉口东北100米",
+                          "distance": "116m",
+                          "latitude": "39.903205",
+                          "title": "北京东交民巷饭店写字楼停车场",
+                          "desc": "正义路与东交民巷交叉口东北100米",
+                          "distanceCount": 116,
+                          "longitude": "116.407809"
+                        },
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://aos-comment.amap.com/B0H1FSEGPO/comment/FDE0D6B7_BAF2_4A66_9360_ACFEF7FEF69E_L0_001_1500_200_1755859266695_43329431.jpg",
+                          "address": "东交民巷甲23号",
+                          "distance": "133m",
+                          "latitude": "39.903019",
+                          "title": "东交民巷饭店停车场",
+                          "desc": "东交民巷甲23号",
+                          "distanceCount": 133,
+                          "longitude": "116.407668"
+                        },
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://mdn.alipayobjects.com/huamei_nzq4hr/afts/img/A*k50VTqanYo0AAAAAAAAAAAAADl-hAQ/original",
+                          "address": "正义路与东交民巷交叉口西北160米",
+                          "distance": "185m",
+                          "latitude": "39.903536",
+                          "title": "北京瑞安宾馆停车场",
+                          "desc": "正义路与东交民巷交叉口西北160米",
+                          "distanceCount": 185,
+                          "longitude": "116.405402"
+                        }
+                      ],
+                      "title": "苏心游",
+                      "lane": "output_isn9lm_card_1",
+                      "desc": "提供江苏文旅服务"
+                    }
+                  },
+                  "endTime": "2026-01-27 20:13:35",
+                  "lane": "output_isn9lm_card_1",
+                  "mediaType": "card",
+                  "order": 3,
+                  "startTime": "2026-01-27 20:13:35"
+                }
+              ],
+              "appId": "202507APwQns01982288",
+              "appName": "苏心游",
+              "configType": "flow_v3",
+              "conversationId": "20260127xyTm43854668",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260127yX6F47693235",
+              "inputs": {
+                "searchEngine": false
+              },
+              "messageTotalTokens": 3321,
+              "meta": [],
+              "outerBusinessId": "412155e9-ca99-4245-a1fa-fb7113234423",
+              "query": "附近停车场",
+              "queryHint": "附近停车场",
+              "requestEndTimeCost": 4713,
+              "requestTime": "2026-01-27 20:13:30",
+              "responseTime": "2026-01-27 20:13:35",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "基于您当前所在位置，为您推荐周边热门景点伴游模式，游玩景点过程中我将全程为你进行讲解。",
+                  "endTime": "2026-01-27 20:13:18",
+                  "lane": "output_g5d0ie_text_1.$.contenttext",
+                  "mediaType": "text",
+                  "order": 2,
+                  "startTime": "2026-01-27 20:13:18"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20250424iS7500129180",
+                      "tool_card_config_relation_id": "20250929ac4R03663143",
+                      "build_status": "PUBLISHED",
+                      "card_type": "tool",
+                      "card_id": "20250424Bt3S00119185",
+                      "card_resource": {
+                        "PC": {
+                          "build_date": "1741929340000",
+                          "package_version": "1.0.9",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_myassistant_ai_freestyle_travel_paul1-h5/1.0.9/dist/umd-named/index.umd.min.js",
+                          "build_version": "V2.0",
+                          "package_name": "@alipay/myassistant_ai_freestyle_travel_paul1-h5"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "package_version": "1.0.9",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_myassistant_ai_freestyle_travel_paul1-mini/1.0.9/dist/umd-named/index.umd.min.js",
+                          "package_name": "@alipay/myassistant_ai_freestyle_travel_paul1-mini"
+                        },
+                        "CUBE": {
+                          "cube_template_id": "CHAT_LLM_myassistant_ai_freestyle_travel"
+                        },
+                        "H5": {
+                          "entry": "FreeStyleTravel",
+                          "package_version": "*",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_tbox-inc-agent-ui/*/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "@alipay/tbox-inc-agent-ui",
+                          "type": "0"
+                        }
+                      }
+                    },
+                    "data": {
+                      "nearbyPoiList": [
+                        {
+                          "itemId": "20250925999def02290i1KQ00143383",
+                          "latitude": "32.426247",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州大运河文化旅游度假区·大明寺",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.419145",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290vXcz00141700",
+                          "latitude": "32.404773",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "个园",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.450325",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290CizR00141895",
+                          "latitude": "32.423371",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州市宋夹城景区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.433962",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290yJF400141688",
+                          "latitude": "32.404055",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "东关街历史街区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.453506",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def022908MEv00143145",
+                          "latitude": "32.407632",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "486扬州非物质文化遗产集聚区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.452463",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290FoSc00141733",
+                          "latitude": "32.391312",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "何园",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.45547",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290K0JN00143161",
+                          "latitude": "32.403515",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "东关历史文化旅游区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.45424",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def022906T9f00142113",
+                          "latitude": "32.363568",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "运河三湾景区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.436796",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20251204999def02290clIH00421998",
+                          "latitude": "32.430808",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州汉陵苑",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.436927",
+                          "tags": "热门景点"
+                        }
+                      ],
+                      "needPoll": false,
+                      "messageId": "20260127IaPQ47699375",
+                      "nextNearestPoiList": [
+                        {
+                          "latitude": "32.414753",
+                          "travelDuration": "13时49分",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "蜀冈-瘦西湖风景名胜区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "tags": "必玩景点",
+                          "itemId": "20250925999def02290Svtg00142101",
+                          "lineType": "驾车",
+                          "travelDistance": "875.67千米",
+                          "gotoApp": false,
+                          "longitude": "119.428036"
+                        },
+                        {
+                          "itemId": "20250925999def02290etkq00141891",
+                          "latitude": "32.397529",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州中国雕版印刷博物馆",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.378503",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290aWt600141839",
+                          "latitude": "32.396441",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "富春茶社",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.448715",
+                          "tags": "热门景点"
+                        }
+                      ],
+                      "title": "苏心游",
+                      "userId": "111",
+                      "result": "$",
+                      "itemId": "20260127201317300000000717106698",
+                      "rowType": "FREESTYLE_TRAVEL",
+                      "assistStatus": "WAITING",
+                      "appId": "202507APwQns01982288",
+                      "$$__metaInfo": {
+                        "messageId": "20260127IaPQ47699375",
+                        "lane": "output_g5d0ie_card_1"
+                      },
+                      "logo": "https://mdn.alipayobjects.com/agt_content/afts/img/BBU2TpVQbyEAAAAAQvAAAAgAegs9AAFr/original?t=6ujgOoDZP_fboE5W6GL86pv5xVnoICfB2N_zjSdvJrgDAAAAZAABPQsAAAAA",
+                      "lane": "output_g5d0ie_card_1",
+                      "ifAoiRange": false,
+                      "desc": "提供江苏文旅服务"
+                    }
+                  },
+                  "endTime": "2026-01-27 20:13:18",
+                  "lane": "output_g5d0ie_card_1",
+                  "mediaType": "card",
+                  "order": 3,
+                  "startTime": "2026-01-27 20:13:18"
+                }
+              ],
+              "appId": "202507APwQns01982288",
+              "appName": "苏心游",
+              "configType": "flow_v3",
+              "conversationId": "20260127xyTm43854668",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260127IaPQ47699375",
+              "inputs": {
+                "searchEngine": false
+              },
+              "meta": [],
+              "outerBusinessId": "4cb79211-6149-453a-88ad-7225028b572e",
+              "query": "随心游",
+              "queryHint": "随心游",
+              "requestEndTimeCost": 705,
+              "requestTime": "2026-01-27 20:13:17",
+              "responseTime": "2026-01-27 20:13:18",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "基于您当前所在位置，为您推荐周边热门景点伴游模式，游玩景点过程中我将全程为你进行讲解。",
+                  "endTime": "2026-01-27 20:13:00",
+                  "lane": "output_g5d0ie_text_1.$.contenttext",
+                  "mediaType": "text",
+                  "order": 2,
+                  "startTime": "2026-01-27 20:13:00"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20250424iS7500129180",
+                      "tool_card_config_relation_id": "20250929ac4R03663143",
+                      "build_status": "PUBLISHED",
+                      "card_type": "tool",
+                      "card_id": "20250424Bt3S00119185",
+                      "card_resource": {
+                        "PC": {
+                          "build_date": "1741929340000",
+                          "package_version": "1.0.9",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_myassistant_ai_freestyle_travel_paul1-h5/1.0.9/dist/umd-named/index.umd.min.js",
+                          "build_version": "V2.0",
+                          "package_name": "@alipay/myassistant_ai_freestyle_travel_paul1-h5"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "package_version": "1.0.9",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_myassistant_ai_freestyle_travel_paul1-mini/1.0.9/dist/umd-named/index.umd.min.js",
+                          "package_name": "@alipay/myassistant_ai_freestyle_travel_paul1-mini"
+                        },
+                        "CUBE": {
+                          "cube_template_id": "CHAT_LLM_myassistant_ai_freestyle_travel"
+                        },
+                        "H5": {
+                          "entry": "FreeStyleTravel",
+                          "package_version": "*",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_tbox-inc-agent-ui/*/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "@alipay/tbox-inc-agent-ui",
+                          "type": "0"
+                        }
+                      }
+                    },
+                    "data": {
+                      "nearbyPoiList": [
+                        {
+                          "itemId": "20250925999def02290i1KQ00143383",
+                          "latitude": "32.426247",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州大运河文化旅游度假区·大明寺",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.419145",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290vXcz00141700",
+                          "latitude": "32.404773",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "个园",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.450325",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290CizR00141895",
+                          "latitude": "32.423371",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州市宋夹城景区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.433962",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290yJF400141688",
+                          "latitude": "32.404055",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "东关街历史街区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.453506",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def022908MEv00143145",
+                          "latitude": "32.407632",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "486扬州非物质文化遗产集聚区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.452463",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290FoSc00141733",
+                          "latitude": "32.391312",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "何园",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.45547",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290K0JN00143161",
+                          "latitude": "32.403515",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "东关历史文化旅游区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.45424",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def022906T9f00142113",
+                          "latitude": "32.363568",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "运河三湾景区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.436796",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20251204999def02290clIH00421998",
+                          "latitude": "32.430808",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州汉陵苑",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.436927",
+                          "tags": "热门景点"
+                        }
+                      ],
+                      "needPoll": false,
+                      "messageId": "20260127OeO647722043",
+                      "nextNearestPoiList": [
+                        {
+                          "latitude": "32.414753",
+                          "travelDuration": "13时49分",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "蜀冈-瘦西湖风景名胜区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "tags": "必玩景点",
+                          "itemId": "20250925999def02290Svtg00142101",
+                          "lineType": "驾车",
+                          "travelDistance": "875.67千米",
+                          "gotoApp": false,
+                          "longitude": "119.428036"
+                        },
+                        {
+                          "itemId": "20250925999def02290etkq00141891",
+                          "latitude": "32.397529",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州中国雕版印刷博物馆",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.378503",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290aWt600141839",
+                          "latitude": "32.396441",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "富春茶社",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.448715",
+                          "tags": "热门景点"
+                        }
+                      ],
+                      "title": "苏心游",
+                      "userId": "111",
+                      "result": "$",
+                      "itemId": "20260127201259300000000717106695",
+                      "rowType": "FREESTYLE_TRAVEL",
+                      "assistStatus": "WAITING",
+                      "appId": "202507APwQns01982288",
+                      "$$__metaInfo": {
+                        "messageId": "20260127OeO647722043",
+                        "lane": "output_g5d0ie_card_1"
+                      },
+                      "logo": "https://mdn.alipayobjects.com/agt_content/afts/img/BBU2TpVQbyEAAAAAQvAAAAgAegs9AAFr/original?t=6ujgOoDZP_fboE5W6GL86pv5xVnoICfB2N_zjSdvJrgDAAAAZAABPQsAAAAA",
+                      "lane": "output_g5d0ie_card_1",
+                      "ifAoiRange": false,
+                      "desc": "提供江苏文旅服务"
+                    }
+                  },
+                  "endTime": "2026-01-27 20:13:00",
+                  "lane": "output_g5d0ie_card_1",
+                  "mediaType": "card",
+                  "order": 3,
+                  "startTime": "2026-01-27 20:13:00"
+                }
+              ],
+              "appId": "202507APwQns01982288",
+              "appName": "苏心游",
+              "configType": "flow_v3",
+              "conversationId": "20260127MsWs43828027",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260127OeO647722043",
+              "inputs": {
+                "searchEngine": false
+              },
+              "meta": [],
+              "outerBusinessId": "1d899c47-aee0-47fa-929b-01927aa90621",
+              "query": "随心游",
+              "queryHint": "随心游",
+              "requestEndTimeCost": 768,
+              "requestTime": "2026-01-27 20:12:59",
+              "responseTime": "2026-01-27 20:13:00",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "成功为您找到附近4个停车场，最近的是正义路酒店地面停车场，距离仅110米，建议您导航前往🚗",
+                  "endTime": "2026-01-27 20:10:56",
+                  "lane": "output_isn9lm_text_1.$.contenttext",
+                  "mediaType": "text",
+                  "order": 2,
+                  "startTime": "2026-01-27 20:10:56"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20250409zBpd00022994",
+                      "tool_card_config_relation_id": "20250523lhbF00315941",
+                      "build_status": "PUBLISHED",
+                      "card_type": "tool",
+                      "card_id": "20250409Kx3q00021186",
+                      "card_resource": {
+                        "PC": {
+                          "package_version": "0.0.0",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/aa/0.0.0/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "aa"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "package_version": "",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm///dist/umd-named/index.umd.min.js",
+                          "package_name": ""
+                        },
+                        "CUBE": {
+                          "cube_template_id": "CHAT_LLM_myassistant_nearby_recommend"
+                        },
+                        "H5": {
+                          "entry": "MultiPoiSelect",
+                          "package_version": "*",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_tbox-inc-agent-ui/*/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "@alipay/tbox-inc-agent-ui",
+                          "type": "0"
+                        }
+                      }
+                    },
+                    "data": {
+                      "result": "$",
+                      "rowType": "MULTI_POI_SELECT",
+                      "innerText": "相关推荐",
+                      "$$__metaInfo": {
+                        "messageId": "20260127bypX47729965",
+                        "lane": "output_isn9lm_card_1"
+                      },
+                      "messageId": "20260127bypX47729965",
+                      "needImg": true,
+                      "logo": "https://mdn.alipayobjects.com/agt_content/afts/img/BBU2TpVQbyEAAAAAQvAAAAgAegs9AAFr/original?t=6ujgOoDZP_fboE5W6GL86pv5xVnoICfB2N_zjSdvJrgDAAAAZAABPQsAAAAA",
+                      "list": [
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://store.is.autonavi.com/showpic/48d194fdee963cc8dae89e22feb6bba3",
+                          "address": "正义路甲4号正义路华纺酒店",
+                          "distance": "110m",
+                          "latitude": "39.903227",
+                          "title": "正义路酒店地面停车场",
+                          "desc": "正义路甲4号正义路华纺酒店",
+                          "distanceCount": 110,
+                          "longitude": "116.407118"
+                        },
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://mdn.alipayobjects.com/huamei_nzq4hr/afts/img/A*k50VTqanYo0AAAAAAAAAAAAADl-hAQ/original",
+                          "address": "正义路与东交民巷交叉口东北100米",
+                          "distance": "116m",
+                          "latitude": "39.903205",
+                          "title": "北京东交民巷饭店写字楼停车场",
+                          "desc": "正义路与东交民巷交叉口东北100米",
+                          "distanceCount": 116,
+                          "longitude": "116.407809"
+                        },
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://aos-comment.amap.com/B0H1FSEGPO/comment/FDE0D6B7_BAF2_4A66_9360_ACFEF7FEF69E_L0_001_1500_200_1755859266695_43329431.jpg",
+                          "address": "东交民巷甲23号",
+                          "distance": "133m",
+                          "latitude": "39.903019",
+                          "title": "东交民巷饭店停车场",
+                          "desc": "东交民巷甲23号",
+                          "distanceCount": 133,
+                          "longitude": "116.407668"
+                        },
+                        {
+                          "descLines": 1,
+                          "actionType": "openLocation",
+                          "img": "https://mdn.alipayobjects.com/huamei_nzq4hr/afts/img/A*k50VTqanYo0AAAAAAAAAAAAADl-hAQ/original",
+                          "address": "正义路与东交民巷交叉口西北160米",
+                          "distance": "185m",
+                          "latitude": "39.903536",
+                          "title": "北京瑞安宾馆停车场",
+                          "desc": "正义路与东交民巷交叉口西北160米",
+                          "distanceCount": 185,
+                          "longitude": "116.405402"
+                        }
+                      ],
+                      "title": "苏心游",
+                      "lane": "output_isn9lm_card_1",
+                      "desc": "提供江苏文旅服务"
+                    }
+                  },
+                  "endTime": "2026-01-27 20:10:56",
+                  "lane": "output_isn9lm_card_1",
+                  "mediaType": "card",
+                  "order": 3,
+                  "startTime": "2026-01-27 20:10:56"
+                }
+              ],
+              "appId": "202507APwQns01982288",
+              "appName": "苏心游",
+              "configType": "flow_v3",
+              "conversationId": "20260127ITye43883152",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260127bypX47729965",
+              "inputs": {
+                "searchEngine": false
+              },
+              "messageTotalTokens": 3321,
+              "meta": [],
+              "outerBusinessId": "9e4cfb44-8044-46c9-a776-fc7c21d84f3a",
+              "query": "附近停车场",
+              "queryHint": "附近停车场",
+              "requestEndTimeCost": 3472,
+              "requestTime": "2026-01-27 20:10:53",
+              "responseTime": "2026-01-27 20:10:56",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "基于您当前所在位置，为您推荐周边热门景点伴游模式，游玩景点过程中我将全程为你进行讲解。",
+                  "endTime": "2026-01-27 20:10:41",
+                  "lane": "output_g5d0ie_text_1.$.contenttext",
+                  "mediaType": "text",
+                  "order": 2,
+                  "startTime": "2026-01-27 20:10:41"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20250424iS7500129180",
+                      "tool_card_config_relation_id": "20250929ac4R03663143",
+                      "build_status": "PUBLISHED",
+                      "card_type": "tool",
+                      "card_id": "20250424Bt3S00119185",
+                      "card_resource": {
+                        "PC": {
+                          "build_date": "1741929340000",
+                          "package_version": "1.0.9",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_myassistant_ai_freestyle_travel_paul1-h5/1.0.9/dist/umd-named/index.umd.min.js",
+                          "build_version": "V2.0",
+                          "package_name": "@alipay/myassistant_ai_freestyle_travel_paul1-h5"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "package_version": "1.0.9",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_myassistant_ai_freestyle_travel_paul1-mini/1.0.9/dist/umd-named/index.umd.min.js",
+                          "package_name": "@alipay/myassistant_ai_freestyle_travel_paul1-mini"
+                        },
+                        "CUBE": {
+                          "cube_template_id": "CHAT_LLM_myassistant_ai_freestyle_travel"
+                        },
+                        "H5": {
+                          "entry": "FreeStyleTravel",
+                          "package_version": "*",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_tbox-inc-agent-ui/*/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "@alipay/tbox-inc-agent-ui",
+                          "type": "0"
+                        }
+                      }
+                    },
+                    "data": {
+                      "nearbyPoiList": [
+                        {
+                          "itemId": "20250925999def02290i1KQ00143383",
+                          "latitude": "32.426247",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州大运河文化旅游度假区·大明寺",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.419145",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290vXcz00141700",
+                          "latitude": "32.404773",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "个园",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.450325",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290CizR00141895",
+                          "latitude": "32.423371",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州市宋夹城景区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.433962",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290yJF400141688",
+                          "latitude": "32.404055",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "东关街历史街区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.453506",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def022908MEv00143145",
+                          "latitude": "32.407632",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "486扬州非物质文化遗产集聚区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.452463",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290FoSc00141733",
+                          "latitude": "32.391312",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "何园",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.45547",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290K0JN00143161",
+                          "latitude": "32.403515",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "东关历史文化旅游区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.45424",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def022906T9f00142113",
+                          "latitude": "32.363568",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "运河三湾景区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.436796",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20251204999def02290clIH00421998",
+                          "latitude": "32.430808",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州汉陵苑",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.436927",
+                          "tags": "热门景点"
+                        }
+                      ],
+                      "needPoll": false,
+                      "messageId": "20260127EsjL47729964",
+                      "nextNearestPoiList": [
+                        {
+                          "latitude": "32.414753",
+                          "travelDuration": "13时49分",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "蜀冈-瘦西湖风景名胜区",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "tags": "必玩景点",
+                          "itemId": "20250925999def02290Svtg00142101",
+                          "lineType": "驾车",
+                          "travelDistance": "875.67千米",
+                          "gotoApp": false,
+                          "longitude": "119.428036"
+                        },
+                        {
+                          "itemId": "20250925999def02290etkq00141891",
+                          "latitude": "32.397529",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "扬州中国雕版印刷博物馆",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.378503",
+                          "tags": "热门景点"
+                        },
+                        {
+                          "itemId": "20250925999def02290aWt600141839",
+                          "latitude": "32.396441",
+                          "buyTicket": false,
+                          "hot": false,
+                          "title": "富春茶社",
+                          "ragDistance": 0,
+                          "extInfo": {},
+                          "gotoApp": false,
+                          "longitude": "119.448715",
+                          "tags": "热门景点"
+                        }
+                      ],
+                      "title": "苏心游",
+                      "userId": "111",
+                      "result": "$",
+                      "itemId": "20260127201040300000000717233517",
+                      "rowType": "FREESTYLE_TRAVEL",
+                      "assistStatus": "WAITING",
+                      "appId": "202507APwQns01982288",
+                      "$$__metaInfo": {
+                        "messageId": "20260127EsjL47729964",
+                        "lane": "output_g5d0ie_card_1"
+                      },
+                      "logo": "https://mdn.alipayobjects.com/agt_content/afts/img/BBU2TpVQbyEAAAAAQvAAAAgAegs9AAFr/original?t=6ujgOoDZP_fboE5W6GL86pv5xVnoICfB2N_zjSdvJrgDAAAAZAABPQsAAAAA",
+                      "lane": "output_g5d0ie_card_1",
+                      "ifAoiRange": false,
+                      "desc": "提供江苏文旅服务"
+                    }
+                  },
+                  "endTime": "2026-01-27 20:10:41",
+                  "lane": "output_g5d0ie_card_1",
+                  "mediaType": "card",
+                  "order": 3,
+                  "startTime": "2026-01-27 20:10:41"
+                }
+              ],
+              "appId": "202507APwQns01982288",
+              "appName": "苏心游",
+              "configType": "flow_v3",
+              "conversationId": "20260127ITye43883152",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260127EsjL47729964",
+              "inputs": {
+                "searchEngine": false
+              },
+              "meta": [],
+              "outerBusinessId": "d47af642-0ac2-4d22-91c1-29e5eda4aeef",
+              "query": "随心游",
+              "queryHint": "随心游",
+              "requestEndTimeCost": 726,
+              "requestTime": "2026-01-27 20:10:40",
+              "responseTime": "2026-01-27 20:10:41",
+              "showInput": true
+            }
+          ],
+          "pageSize": 5,
+          "success": true,
+          "totalCount": 273
+        },
+        "success": true,
+        "traceId": "0a424b6b17700489442054471e027f"
+      },
+      "success": true,
+      "traceId": "0a424b6b17700489442054471e027f"
+    }
+  },
+  {
+    "index": 3,
+    "url": "https://open.tbox.alipay.com/agent/v1/homepage/get",
+    "method": "POST",
+    "status": 200,
+    "duration": 445,
+    "responseBody": {
+      "hostName": "agtgw-43-13",
+      "result": {
+        "agentAvatar": "https://mdn.alipayobjects.com/agt_content/afts/img/BBU2TpVQbyEAAAAAQvAAAAgAegs9AAFr/original?t=6ujgOoDZP_fboE5W6GL86pv5xVnoICfB2N_zjSdvJrgDAAAAZAABPQsAAAAA",
+        "background": {
+          "blockData": "{\"h5\":{\"cropperData\":\"{\\\"x\\\":-117.82327586206895,\\\"y\\\":0,\\\"scale\\\":1.437192118226601}\",\"fileId\":\"UA6eR7Y8LZEAAAAARRAAAAgAegs9AQFr\",\"url\":\"https://mdn.alipayobjects.com/agt_content/afts/img/UA6eR7Y8LZEAAAAARRAAAAgAegs9AQFr/original\"},\"origin\":{\"fileId\":\"Lg9OSY5gs6UAAAAAQtAAAAgAegs9AQFr\",\"url\":\"https://mdn.alipayobjects.com/agt_content/afts/img/Lg9OSY5gs6UAAAAAQtAAAAgAegs9AQFr/original\"},\"pc\":{\"cropperData\":\"{\\\"x\\\":0,\\\"y\\\":-424.07792207792204,\\\"scale\\\":2.0445269016697587}\",\"fileId\":\"UPObR6JXLdMAAAAARJAAAAgAegs9AQFr\",\"url\":\"https://mdn.alipayobjects.com/agt_content/afts/img/UPObR6JXLdMAAAAARJAAAAgAegs9AQFr/original\"}}",
+          "rowType": "IMG"
+        },
+        "chatFileEnable": false,
+        "homepageUserInfo": {
+          "speakerFlag": "1"
+        },
+        "imgQueryEnabled": "N",
+        "inputPlaceHolder": "有什么需要问我的吗~",
+        "prologue": [
+          {
+            "blockData": "{\"title\":\"Hi，我是苏心游\",\"list\":[],\"desc\":\"更聪明更懂你的旅游搭子\"}",
+            "pluginId": "2021005181649640",
+            "rowType": "BLOCK_INTRO"
+          },
+          {
+            "blockData": "{\"title\":\"游玩服务\",\"list\":[{\"imageUrl\":\"https://mdn.alipayobjects.com/agt_content/afts/img/XpWhRbk5TSgAAAAASDAAAAgAegs9AQFr/original\",\"query\":\"旅行规划\",\"title\":\"官方路线\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[\"行程规划\",\"即刻出发\"]},{\"imageUrl\":\"https://mdn.alipayobjects.com/agt_content/afts/img/uTyNQqCwOWwAAAAARrAAAAgAegs9AQFr/original\",\"query\":\"长江百景\",\"title\":\"长江百景\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[\"畅玩江苏\",\"景点实时讲解\"]},{\"imageUrl\":\"https://mdn.alipayobjects.com/agt_content/afts/img/mg4SR4-gkHUAAAAAUoAAAAgAegs9AQFr/original\",\"query\":\"运河百景\",\"title\":\"运河百景\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[\"畅玩江苏\",\"景点实时讲解\"]}]}",
+            "pluginId": "2021005181649640",
+            "rowType": "BLOCK_SERVICE_LIST"
+          },
+          {
+            "blockData": "{\"bannerImage\":\"https://mdn.alipayobjects.com/agt_content/afts/img/_SH9Rrvinc4AAAAAX9AAAAgAegs9AQFr/original\",\"query\":\"\",\"bannerJumpUrl\":\"alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Frender.alipay.com%2Fp%2Fc%2F180020240000099828%2Fhome.html\",\"list\":[]}",
+            "pluginId": "2021005181649640",
+            "rowType": "BANNER"
+          },
+          {
+            "blockData": "{\"title\":\"配套服务\",\"list\":[{\"query\":\"开启随心游\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/g5UfSI6xd7AAAAAAQ_AAAAgAegs9AQFr/original\",\"title\":\"随心游\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"附近景区客流\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/pXa3Q4ElKKMAAAAAQ_AAAAgAegs9AQFr/original\",\"title\":\"高峰预警\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"给我推荐一些热门的演出\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/RVTJSpQPZQMAAAAARVAAAAgAegs9AQFr/original\",\"title\":\"演出预告\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"附近停车场\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/X0ssQ6LprDYAAAAAQ_AAAAgAegs9AQFr/original\",\"title\":\"附近停车场\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"展览推荐\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/ULfXTLUg6KcAAAAAQNAAAAgAegs9AQFr/original\",\"title\":\"展览推荐\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"非遗美食\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/3rvrQKTj104AAAAARWAAAAgAegs9AQFr/original\",\"title\":\"非遗美食\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"投诉建议\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/uYeARKDBmicAAAAAR0AAAAgAegs9AQFr/original\",\"title\":\"投诉建议\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"导游核验\",\"icon\":\"https://mdn.alipayobjects.com/agt_content/afts/img/AJ1kQKhAUP8AAAAARKAAAAgAegs9AQFr/original\",\"title\":\"导游核验\",\"jumpUrl\":\"\",\"clickAction\":\"query\",\"tags\":[]}]}",
+            "pluginId": "2021005181649640",
+            "rowType": "BLOCK_SERVICE_ICON_LIST"
+          },
+          {
+            "blockData": "{\"defaultNum\":3,\"title\":\"猜你想问\",\"list\":[{\"query\":\"展览推荐\",\"content\":\"最近博物馆有哪些展览推荐？\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"水韵江苏旅游年卡景区预约如何使用？\",\"content\":\"水韵江苏旅游年卡景区预约如何使用？\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"艺考机构\",\"content\":\"江苏有哪些官方认定的社会艺术水平考级\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"如何区分正规旅行社和“黑旅行社”\",\"content\":\"如何区分正规旅行社和“黑旅行社”\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"非遗美食\",\"content\":\"推荐的特色非遗美食\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"江苏旅游年卡使用范围？\",\"content\":\"江苏旅游年卡使用范围？\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"景区周边的停车场实时车位饱和度如何查看？\",\"content\":\"景区周边的停车场实时车位饱和度如何查\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"南京博物院预约渠道有哪些？\",\"content\":\"南京博物院预约渠道有哪些？\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"导游核验\",\"content\":\"我遇到了黑导游，产生了权益纠纷怎么办\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"江苏省内景美人少的旅游地推荐\",\"content\":\"景美人少的旅游地推荐\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"江苏省内适合cityWalk散心路线推荐\",\"content\":\"适合cityWalk散心路线推荐\",\"clickAction\":\"query\",\"tags\":[]},{\"query\":\"江苏省内去哪儿玩此刻可以薅羊毛？\",\"content\":\"去哪儿玩此刻可以薅羊毛？\",\"clickAction\":\"query\",\"tags\":[]}]}",
+            "pluginId": "2021005181649640",
+            "rowType": "BLOCK_QUESTION_LIST"
+          }
+        ],
+        "searchEngineSwitch": false,
+        "toolbarIpConfig": {
+          "clickIPConfig": {
+            "fallbackImageUrl": "https://mdn.alipayobjects.com/huamei_frp8ut/afts/img/A*gVRgRKj_-oIAAAAAWyAAAAgAet-KAQ/original",
+            "height": 204,
+            "ipResourceType": "LOTTIE",
+            "ipResourceUrl": "https://mdn.alipayobjects.com/huamei_k5vuou/afts/file/A*4_QhTqGzDKwAAAAAQcAAAAgAejm6AQ",
+            "ipSuggestion": {
+              "button": {
+                "buttonAction": "SEND_QUERY",
+                "buttonName": "去对话",
+                "query": "江苏游玩攻略"
+              },
+              "suggestion": "问我关于文旅的问题吧"
+            },
+            "width": 158
+          },
+          "enableToolbar": true,
+          "ipTimerConfig": {
+            "interval": 20
+          },
+          "staticIPConfig": {
+            "fallbackImageUrl": "https://mdn.alipayobjects.com/huamei_frp8ut/afts/img/A*gVRgRKj_-oIAAAAAWyAAAAgAet-KAQ/original",
+            "height": 204,
+            "ipResourceType": "LOTTIE",
+            "ipResourceUrl": "https://mdn.alipayobjects.com/huamei_k5vuou/afts/file/A*uWGQSJQkzosAAAAAQYAAAAgAejm6AQ",
+            "ipSuggestion": {
+              "button": {
+                "buttonAction": "SEND_QUERY",
+                "buttonName": "去对话",
+                "query": "文旅大礼包"
+              },
+              "suggestion": "来，你的优惠券"
+            },
+            "width": 158
+          },
+          "type": "IP_CONFIG"
+        }
+      },
+      "success": true,
+      "traceId": "0a42427017700489445005431e0283"
+    }
+  }
+]

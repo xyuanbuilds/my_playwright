@@ -1,0 +1,688 @@
+[
+  {
+    "index": 0,
+    "url": "https://open.tbox.alipay.com/agent/auth",
+    "method": "POST",
+    "status": 0,
+    "duration": 54
+  },
+  {
+    "index": 1,
+    "url": "https://open.tbox.alipay.com/agent/auth",
+    "method": "POST",
+    "status": 200,
+    "duration": 267,
+    "responseBody": {
+      "hostName": "tagtgw-01-tagtgwprodgzcrql00b0-1",
+      "result": "00a42466d4U7sBDRXQ8tBWTso",
+      "success": true,
+      "traceId": "0a424b6b17700489426342461e0276"
+    }
+  },
+  {
+    "index": 2,
+    "url": "https://open.tbox.alipay.com/agent/v1/plugin/proxy",
+    "method": "POST",
+    "status": 200,
+    "duration": 204,
+    "responseBody": {
+      "hostName": "agtgw-43-12",
+      "result": {
+        "resultCode": 200,
+        "resultDesc": "operation success",
+        "resultObj": {
+          "currentPage": 1,
+          "data": [
+            {
+              "answers": [
+                {
+                  "answer": "测试AI卡片",
+                  "endTime": "2026-02-03 00:10:41",
+                  "lane": "output_vtjt9c_text_1",
+                  "mediaType": "text",
+                  "order": 1,
+                  "startTime": "2026-02-03 00:10:41"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20260105Q5ko07341117",
+                      "build_status": "PUBLISHED",
+                      "card_type": "custom",
+                      "card_id": "20260105qGsB06336916",
+                      "card_resource": {
+                        "PC": {
+                          "filepath": "https://mdn.alipayobjects.com/agt_content/afts/file/UIDXQLM6g74AAAAAQBAAAAgAegs9AQFr",
+                          "build_version": "V1.0"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {},
+                        "MINIAPP_COMPONENT": {
+                          "component_switch": "true"
+                        },
+                        "CUBE": {},
+                        "H5": {
+                          "filepath": "https://mdn.alipayobjects.com/agt_content/afts/file/UIDXQLM6g74AAAAAQBAAAAgAegs9AQFr",
+                          "build_version": "V1.0",
+                          "cdn_url": "https://mdn.alipayobjects.com/agt_content/afts/file/b203SpWouvIAAAAAQHAAAAgAegs9AQFr",
+                          "type": "2"
+                        }
+                      }
+                    },
+                    "data": {
+                      "locationName": "1111",
+                      "latitude": 30,
+                      "schemeUrl": "1111",
+                      "messageId": "20260203az5E49839673",
+                      "locationAddress": "1111",
+                      "cardDescription": "1222",
+                      "cardTitle": "23232",
+                      "queryContent": "123",
+                      "phoneNumber": "123",
+                      "$$__metaInfo": {
+                        "messageId": "20260203az5E49839673",
+                        "lane": "output_vtjt9c_card_1"
+                      },
+                      "halfscreenHeight": 85,
+                      "lane": "output_vtjt9c_card_1",
+                      "longitude": 120
+                    }
+                  },
+                  "endTime": "2026-02-03 00:10:41",
+                  "lane": "output_vtjt9c_card_1",
+                  "mediaType": "card",
+                  "order": 2,
+                  "startTime": "2026-02-03 00:10:41"
+                }
+              ],
+              "appId": "202601AP9TEi09250838",
+              "appName": "折牧卡片e2e测试",
+              "configType": "flow_v3",
+              "conversationId": "20260203Sq1p45778776",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260203az5E49839673",
+              "inputs": {
+                "searchEngine": false
+              },
+              "meta": [],
+              "outerBusinessId": "515247a7-abb5-4f7f-bda8-838d43612c35",
+              "query": "AI卡片",
+              "queryHint": "AI卡片",
+              "requestEndTimeCost": 525,
+              "requestTime": "2026-02-03 00:10:40",
+              "responseTime": "2026-02-03 00:10:41",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "Paul卡片",
+                  "endTime": "2026-02-03 00:10:28",
+                  "lane": "output_dzgnhr_text_1",
+                  "mediaType": "text",
+                  "order": 1,
+                  "startTime": "2026-02-03 00:10:28"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "202602023EhJ08117634",
+                      "build_status": "PUBLISHED",
+                      "card_type": "custom",
+                      "card_id": "20260202hQpX07061809",
+                      "card_resource": {
+                        "PC": {
+                          "build_date": "1764312542000",
+                          "package_version": "1.0.30",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_agent_paul_shenzhen_tong-h5/1.0.30/dist/umd-named/index.umd.min.js",
+                          "build_version": "V2.0",
+                          "package_name": "@alipay/agent_paul_shenzhen_tong-h5"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm//null/dist/umd-named/index.umd.min.js"
+                        },
+                        "MINIAPP_COMPONENT": {
+                          "component_switch": "true"
+                        },
+                        "CUBE": {},
+                        "H5": {
+                          "build_date": "1764312542000",
+                          "entry": "welcome",
+                          "package_version": "1.0.30",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_agent_paul_shenzhen_tong-h5/1.0.30/dist/umd-named/index.umd.min.js",
+                          "build_version": "V2.0",
+                          "package_name": "@alipay/agent_paul_shenzhen_tong-h5",
+                          "type": "0"
+                        }
+                      }
+                    },
+                    "data": {
+                      "suggestServerList": [
+                        {
+                          "icon": "https://mdn.alipayobjects.com/huamei_ffsq71/afts/img/w75bQo4ZJXsAAAAAQCAAAAgADkx5AQFr/original",
+                          "title": "开具发票"
+                        },
+                        {
+                          "icon": "https://mdn.alipayobjects.com/huamei_ffsq71/afts/img/syBzRqUReCsAAAAAQCAAAAgADkx5AQFr/original",
+                          "title": "便民服务"
+                        },
+                        {
+                          "icon": "https://mdn.alipayobjects.com/huamei_ffsq71/afts/img/a69OS4tuv5AAAAAAQCAAAAgADkx5AQFr/original",
+                          "title": "地铁时刻"
+                        },
+                        {
+                          "icon": "https://mdn.alipayobjects.com/huamei_ffsq71/afts/img/rh6KQrNSrHkAAAAAQCAAAAgADkx5AQFr/original",
+                          "title": "线路规划"
+                        },
+                        {
+                          "icon": "https://mdn.alipayobjects.com/huamei_ffsq71/afts/img/GcLlTZ-fVXcAAAAAQCAAAAgADkx5AQFr/original",
+                          "title": "吃喝玩乐"
+                        }
+                      ],
+                      "tabList": [
+                        {
+                          "title": "试试问我",
+                          "key": "guess"
+                        },
+                        {
+                          "title": "刷码乘车",
+                          "key": "scan"
+                        },
+                        {
+                          "background": "https://mdn.alipayobjects.com/huamei_ffsq71/afts/img/is-eTZDtZlwAAAAAQOAAAAgADkx5AQFr/original",
+                          "title": "余额查询",
+                          "key": "balance",
+                          "tips": "更新可能存在延迟，请以深圳通卡实际余额为准"
+                        }
+                      ],
+                      "appCnl": "",
+                      "$$__metaInfo": {
+                        "messageId": "20260203y1CA49866553",
+                        "lane": "output_dzgnhr_card_1"
+                      },
+                      "messageId": "20260203y1CA49866553",
+                      "location": "",
+                      "env": "",
+                      "lane": "output_dzgnhr_card_1",
+                      "serveMap": {
+                        "userLogin": "202509056feC02881904",
+                        "getUserPoints": "20250912I1jc02980903",
+                        "currentLocationAndWeather": "20250908TthS02907311",
+                        "changeQuestion": "202509150e3m03044530",
+                        "queryCardBalance": "20250827NdBj02608518"
+                      }
+                    }
+                  },
+                  "endTime": "2026-02-03 00:10:28",
+                  "lane": "output_dzgnhr_card_1",
+                  "mediaType": "card",
+                  "order": 2,
+                  "startTime": "2026-02-03 00:10:28"
+                }
+              ],
+              "appId": "202601AP9TEi09250838",
+              "appName": "折牧卡片e2e测试",
+              "configType": "flow_v3",
+              "conversationId": "20260203TKIS45813194",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260203y1CA49866553",
+              "inputs": {
+                "searchEngine": false
+              },
+              "messageTotalTokens": 112,
+              "meta": [],
+              "outerBusinessId": "0b31fbcd-d0fb-4ee8-85c6-451b588ce288",
+              "query": "Paul卡片",
+              "queryHint": "Paul卡片",
+              "requestEndTimeCost": 2839,
+              "requestTime": "2026-02-03 00:10:26",
+              "responseTime": "2026-02-03 00:10:28",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "三方卡片",
+                  "endTime": "2026-02-03 00:10:15",
+                  "lane": "output_1p4gq0_text_1",
+                  "mediaType": "text",
+                  "order": 1,
+                  "startTime": "2026-02-03 00:10:15"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20260202UvM708122930",
+                      "build_status": "PUBLISHED",
+                      "card_type": "custom",
+                      "card_id": "202602024FRE07063540",
+                      "card_resource": {
+                        "PC": {
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm//null/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm//null/dist/umd-named/index.umd.min.js"
+                        },
+                        "MINIAPP_COMPONENT": {
+                          "component_switch": "true"
+                        },
+                        "CUBE": {},
+                        "H5": {
+                          "entry": "Card",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm//null/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "cdn_url": "https://mdn.alipayobjects.com/huamei_nzq4hr/afts/file/A*XSNzRrTMVp4AAAAAQFAAAAgAel-hAQ/third.umd.glb",
+                          "type": "1"
+                        }
+                      }
+                    },
+                    "data": {
+                      "cardData": {
+                        "list": [
+                          {
+                            "actionType": "link",
+                            "title": "打开链接",
+                            "content": "跳转到支付宝小程序或微信小程序"
+                          },
+                          {
+                            "actionType": "guide",
+                            "title": "导航定位",
+                            "content": "导航到黄龙万科中心（杭州市西湖区学院路78号）"
+                          },
+                          {
+                            "actionType": "query",
+                            "title": "发送查询",
+                            "content": "向AI助手发送问候消息"
+                          },
+                          {
+                            "actionType": "phone",
+                            "title": "拨打电话",
+                            "content": "拨打客服电话 0571-88218821"
+                          },
+                          {
+                            "actionType": "toast",
+                            "title": "显示提示",
+                            "content": "显示加载中的Toast提示信息"
+                          },
+                          {
+                            "actionType": "getLocation",
+                            "title": "获取位置",
+                            "content": "获取当前设备的地理位置信息"
+                          }
+                        ]
+                      },
+                      "$$__metaInfo": {
+                        "messageId": "20260203uJcq49865210",
+                        "lane": "output_1p4gq0_card_1"
+                      },
+                      "messageId": "20260203uJcq49865210",
+                      "lane": "output_1p4gq0_card_1"
+                    }
+                  },
+                  "endTime": "2026-02-03 00:10:15",
+                  "lane": "output_1p4gq0_card_1",
+                  "mediaType": "card",
+                  "order": 2,
+                  "startTime": "2026-02-03 00:10:15"
+                }
+              ],
+              "appId": "202601AP9TEi09250838",
+              "appName": "折牧卡片e2e测试",
+              "configType": "flow_v3",
+              "conversationId": "20260203MCjh45802556",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260203uJcq49865210",
+              "inputs": {
+                "searchEngine": false
+              },
+              "messageTotalTokens": 68,
+              "meta": [],
+              "outerBusinessId": "eb97e8d0-de51-4ec5-a57b-0c0d279589af",
+              "query": "三方卡片",
+              "queryHint": "三方卡片",
+              "requestEndTimeCost": 1671,
+              "requestTime": "2026-02-03 00:10:14",
+              "responseTime": "2026-02-03 00:10:15",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "测试一方卡片",
+                  "endTime": "2026-02-03 00:10:04",
+                  "lane": "output_xwqzpy_text_1",
+                  "mediaType": "text",
+                  "order": 1,
+                  "startTime": "2026-02-03 00:10:04"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "2025120132aO06181152",
+                      "build_status": "PUBLISHED",
+                      "card_type": "custom",
+                      "card_id": "20250820WVt802247324",
+                      "card_resource": {
+                        "PC": {
+                          "package_version": "",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm///dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": ""
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {
+                          "package_version": "",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm///dist/umd-named/index.umd.min.js",
+                          "package_name": ""
+                        },
+                        "MINIAPP_COMPONENT": {
+                          "component_switch": "false"
+                        },
+                        "CUBE": {},
+                        "H5": {
+                          "entry": "ServiceList",
+                          "package_version": "*",
+                          "filepath": "https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_tbox-inc-agent-ui/*/dist/umd-named/index.umd.min.js",
+                          "build_version": "V1.0",
+                          "package_name": "@alipay/tbox-inc-agent-ui",
+                          "type": "0"
+                        }
+                      }
+                    },
+                    "data": {
+                      "rowType": "banner",
+                      "$$__metaInfo": {
+                        "messageId": "20260203Bm5K49854464",
+                        "lane": "output_xwqzpy_card_1"
+                      },
+                      "logo": "https://mdn.alipayobjects.com/huamei_nzq4hr/afts/img/A*GcW4SpEH65gAAAAAQPAAAAgAel-hAQ/original",
+                      "messageId": "20260203Bm5K49854464",
+                      "title": "图片标题",
+                      "list": [
+                        {
+                          "actionType": "link",
+                          "title": "跳转链接",
+                          "jumpUrl": "https://www.baidu.com",
+                          "desc": "跳转测试"
+                        },
+                        {
+                          "actionType": "query",
+                          "query": "111",
+                          "title": "发送消息"
+                        },
+                        {
+                          "actionType": "guide",
+                          "address": "测试地址",
+                          "query": "111",
+                          "latitude": "30.266666",
+                          "name": "测试地址",
+                          "title": "跳转地图",
+                          "longitude": "120.100000"
+                        },
+                        {
+                          "actionType": "phone",
+                          "phone": "18888888888",
+                          "title": "拨打电话"
+                        }
+                      ],
+                      "maxCount": 10,
+                      "lane": "output_xwqzpy_card_1",
+                      "desc": "测试标题"
+                    }
+                  },
+                  "endTime": "2026-02-03 00:10:05",
+                  "lane": "output_xwqzpy_card_1",
+                  "mediaType": "card",
+                  "order": 2,
+                  "startTime": "2026-02-03 00:10:04"
+                }
+              ],
+              "appId": "202601AP9TEi09250838",
+              "appName": "折牧卡片e2e测试",
+              "configType": "flow_v3",
+              "conversationId": "20260203lyJB45790234",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260203Bm5K49854464",
+              "inputs": {
+                "searchEngine": false
+              },
+              "meta": [],
+              "outerBusinessId": "7426d6b2-8ae4-4f3e-95cc-42c7da05eb38",
+              "query": "一方卡片",
+              "queryHint": "一方卡片",
+              "requestEndTimeCost": 643,
+              "requestTime": "2026-02-03 00:10:04",
+              "responseTime": "2026-02-03 00:10:05",
+              "showInput": true
+            },
+            {
+              "answers": [
+                {
+                  "answer": "测试AI卡片",
+                  "endTime": "2026-02-03 00:06:36",
+                  "lane": "output_vtjt9c_text_1",
+                  "mediaType": "text",
+                  "order": 1,
+                  "startTime": "2026-02-03 00:06:36"
+                },
+                {
+                  "answer": {
+                    "card": {
+                      "card_config_id": "20260105Q5ko07341117",
+                      "build_status": "PUBLISHED",
+                      "card_type": "custom",
+                      "card_id": "20260105qGsB06336916",
+                      "card_resource": {
+                        "PC": {
+                          "filepath": "https://mdn.alipayobjects.com/agt_content/afts/file/UIDXQLM6g74AAAAAQBAAAAgAegs9AQFr",
+                          "build_version": "V1.0"
+                        },
+                        "lowCodeConfig": {},
+                        "MINIAPP": {},
+                        "MINIAPP_COMPONENT": {
+                          "component_switch": "true"
+                        },
+                        "CUBE": {},
+                        "H5": {
+                          "filepath": "https://mdn.alipayobjects.com/agt_content/afts/file/UIDXQLM6g74AAAAAQBAAAAgAegs9AQFr",
+                          "build_version": "V1.0",
+                          "cdn_url": "https://mdn.alipayobjects.com/agt_content/afts/file/b203SpWouvIAAAAAQHAAAAgAegs9AQFr",
+                          "type": "2"
+                        }
+                      }
+                    },
+                    "data": {
+                      "locationName": "1111",
+                      "latitude": 30,
+                      "schemeUrl": "1111",
+                      "messageId": "20260203VCKB49862874",
+                      "locationAddress": "1111",
+                      "cardDescription": "1222",
+                      "cardTitle": "23232",
+                      "queryContent": "123",
+                      "phoneNumber": "123",
+                      "$$__metaInfo": {
+                        "messageId": "20260203VCKB49862874",
+                        "lane": "output_vtjt9c_card_1"
+                      },
+                      "halfscreenHeight": 85,
+                      "lane": "output_vtjt9c_card_1",
+                      "longitude": 120
+                    }
+                  },
+                  "endTime": "2026-02-03 00:06:37",
+                  "lane": "output_vtjt9c_card_1",
+                  "mediaType": "card",
+                  "order": 2,
+                  "startTime": "2026-02-03 00:06:36"
+                }
+              ],
+              "appId": "202601AP9TEi09250838",
+              "appName": "折牧卡片e2e测试",
+              "configType": "flow_v3",
+              "conversationId": "20260203quFX45804268",
+              "cot": [],
+              "enableDebug": true,
+              "generateState": "success",
+              "id": "20260203VCKB49862874",
+              "inputs": {
+                "searchEngine": false
+              },
+              "meta": [],
+              "outerBusinessId": "449b2e0e-f11e-499d-b2a8-d8b9d8925c41",
+              "query": "AI卡片",
+              "queryHint": "AI卡片",
+              "requestEndTimeCost": 527,
+              "requestTime": "2026-02-03 00:06:36",
+              "responseTime": "2026-02-03 00:06:37",
+              "showInput": true
+            }
+          ],
+          "pageSize": 5,
+          "success": true,
+          "totalCount": 317
+        },
+        "success": true,
+        "traceId": "0a424b6b17700489428992463e0276"
+      },
+      "success": true,
+      "traceId": "0a424b6b17700489428992463e0276"
+    }
+  },
+  {
+    "index": 3,
+    "url": "https://open.tbox.alipay.com/agent/v1/homepage/get",
+    "method": "POST",
+    "status": 200,
+    "duration": 468,
+    "responseBody": {
+      "hostName": "agtgw-43-10",
+      "result": {
+        "agentAvatar": "https://mdn.alipayobjects.com/agt_content/afts/img/Lt_qTaHR1-MAAAAAAAAAAAAADhe3AQBr/original",
+        "background": {},
+        "chatFileEnable": false,
+        "homepageUserInfo": {
+          "speakerFlag": "0"
+        },
+        "imgQueryEnabled": "N",
+        "inputPlaceHolder": "有什么需要问我的吗~",
+        "prologue": [
+          {
+            "blockData": "{\"button\":[{\"query\":\"一方卡片\",\"title\":\"一方卡片\",\"jumpUrl\":\"\",\"desc\":\"描述内容\",\"clickAction\":\"query\"},{\"query\":\"AI卡片\",\"title\":\"AI卡片\",\"jumpUrl\":\"\",\"desc\":\"描述内容\",\"clickAction\":\"query\"},{\"query\":\"Paul卡片\",\"title\":\"Paul卡片\",\"jumpUrl\":\"\",\"desc\":\"描述内容\",\"clickAction\":\"query\"},{\"query\":\"三方卡片\",\"title\":\"三方卡片\",\"jumpUrl\":\"\",\"desc\":\"描述内容\",\"clickAction\":\"query\"}],\"logo\":\"https://mdn.alipayobjects.com/agt_content/afts/img/Lt_qTaHR1-MAAAAAAAAAAAAADhe3AQBr/original?t=SFg7BJl0NMyd4krFlop0f0-VTFm5wAEe0IjLm77zBmwDAAAAZAABPQtpi-1Q\",\"welcome\":\"Hello，我是折牧卡片e2e测试\",\"desc\":\"请问有什么可以帮忙的吗，尽管问我哦~\"}",
+            "pluginId": "2021005181649640",
+            "rowType": "twoCol"
+          }
+        ],
+        "searchEngineSwitch": false
+      },
+      "success": true,
+      "traceId": "0a424b6b17700489431091514e0282"
+    }
+  },
+  {
+    "index": 4,
+    "url": "https://open.tbox.alipay.com/agent/v1/plugin/execPluginTool",
+    "method": "POST",
+    "status": 200,
+    "duration": 494,
+    "responseBody": {
+      "hostName": "agtgw-43-9",
+      "result": {
+        "cost": 0,
+        "result": {
+          "result": {
+            "scanQrCodeUrl": "alipays://platformapi/startapp?appId=200011235&cardType=T1440300",
+            "list": [
+              {
+                "text": "深圳北站5号线末班车是什么时候",
+                "content": "深圳北站5号线末班车是什么时候"
+              },
+              {
+                "text": "全运会在深圳的比赛场馆",
+                "content": "全运会在深圳的比赛场馆"
+              },
+              {
+                "text": "我要去华发冰雪大世界",
+                "content": "我要去华发冰雪大世界"
+              }
+            ]
+          },
+          "code": "200",
+          "success": true,
+          "timestamp": 1770048943779
+        },
+        "success": true,
+        "traceId": "0a4b070417700489435111713220"
+      },
+      "success": true,
+      "traceId": "0a424b6b17700489434262466e0276"
+    }
+  },
+  {
+    "index": 5,
+    "url": "https://open.tbox.alipay.com/agent/v1/plugin/execPluginTool",
+    "method": "POST",
+    "status": 200,
+    "duration": 595,
+    "responseBody": {
+      "hostName": "agtgw-43-10",
+      "result": {
+        "cost": 0,
+        "result": {
+          "result": {},
+          "code": "401",
+          "success": false,
+          "timestamp": 1770048943862
+        },
+        "success": true,
+        "traceId": "0a4b4e0017700489435218670181"
+      },
+      "success": true,
+      "traceId": "0a424b6b17700489434251515e0282"
+    }
+  },
+  {
+    "index": 6,
+    "url": "https://open.tbox.alipay.com/agent/v1/plugin/execPluginTool",
+    "method": "POST",
+    "status": 200,
+    "duration": 866,
+    "responseBody": {
+      "hostName": "agtgw-43-2",
+      "result": {
+        "cost": 0,
+        "result": {
+          "result": {
+            "nightTemperature": "13",
+            "city": "深圳市",
+            "windPower": "≤3",
+            "weather": "晴",
+            "humidity": "70",
+            "windDirection": "东",
+            "dayTemperature": "22",
+            "reportTime": "2026-02-03 00:00:33"
+          },
+          "msg": "操作成功",
+          "traceId": "2187b57617700489439611649e5a6c",
+          "code": "10000",
+          "cost": 205,
+          "success": true
+        },
+        "success": true
+      },
+      "success": true,
+      "traceId": "0a424b6b17700489438071880e027e"
+    }
+  }
+]
