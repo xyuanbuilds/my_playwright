@@ -15,7 +15,7 @@ export interface PlatformConfig {
 /**
  * 平台类型
  */
-export type PlatformType = "alipay" | "wechat" | "h5";
+export type PlatformType = "alipay" | "wechat" | "wechat-ios";
 
 /**
  * 预定义的平台配置
@@ -33,12 +33,18 @@ export const PLATFORMS: Record<PlatformType, PlatformConfig> = {
       "Mozilla/5.0 (Linux; Android 12; MI 11 Build/SKQ1.211006.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.127 Mobile Safari/537.36 MicroMessenger/8.0.38.2400(0x28002657) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64",
     viewport: { width: 375, height: 812 },
   },
-  h5: {
-    name: "普通H5",
+  "wechat-ios": {
+    name: "微信iOS",
     userAgent:
-      "Mozilla/5.0 (Linux; Android 12; MI 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
-    viewport: { width: 375, height: 812 },
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.38 NetType/WIFI Language/zh_CN",
+    viewport: { width: 390, height: 844 },
   },
+  // h5: {
+  //   name: "普通H5",
+  //   userAgent:
+  //     "Mozilla/5.0 (Linux; Android 12; MI 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+  //   viewport: { width: 375, height: 812 },
+  // },
 };
 
 /**
@@ -59,9 +65,7 @@ export class PlatformContext {
    * @param platform 平台类型或自定义配置
    * @returns 包含 context、page 和 config 的对象
    */
-  async createPlatformPage(
-    platform: PlatformType | PlatformConfig,
-  ): Promise<{
+  async createPlatformPage(platform: PlatformType | PlatformConfig): Promise<{
     context: BrowserContext;
     page: Page;
     config: PlatformConfig;
@@ -88,7 +92,6 @@ export class PlatformContext {
 
     return { context, page, config };
   }
-
 
   /**
    * 清理所有创建的上下文和页面

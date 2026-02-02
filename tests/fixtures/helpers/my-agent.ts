@@ -28,6 +28,110 @@ export class MyAgent {
     "textarea",
   ];
 
+  /**
+   * 判断元素是否是聊天消息（即不在 preloadList 和 historyWrapper 容器内）
+   * 此函数设计用于在 page.evaluate() 中使用
+   *
+   * @example
+   * ```typescript
+   * const result = await page.evaluate(
+   *   (isChatMsgFn) => {
+   *     const isChatMsg = new Function(`return (${isChatMsgFn})`)();
+   *     const iframe = document.querySelector('iframe');
+   *     return isChatMsg(iframe);
+   *   },
+   *   MyAgent.isChatMsg.toString()
+   * );
+   * ```
+   */
+  static isChatMsg(element: Element | null): boolean {
+    if (!element) return false;
+
+    let current: Element | null = element;
+    while (current && current !== document.body) {
+      if (
+        current.className &&
+        typeof current.className === "string"
+      ) {
+        // 如果在 preloadList 或 historyWrapper 中，都不是聊天消息
+        if (
+          current.className.includes("preloadList") ||
+          current.className.includes("historyWrapper")
+        ) {
+          return false;
+        }
+      }
+      current = current.parentElement;
+    }
+    return true; // 既不在 preloadList 也不在 historyWrapper 中，是聊天消息
+  }
+
+  /**
+   * 判断元素是否在历史消息容器中（即在 historyWrapper 容器内）
+   * 此函数设计用于在 page.evaluate() 中使用
+   *
+   * @example
+   * ```typescript
+   * const result = await page.evaluate(
+   *   (isHistoryFn) => {
+   *     const isHistory = new Function(`return (${isHistoryFn})`)();
+   *     const element = document.querySelector('.message');
+   *     return isHistory(element);
+   *   },
+   *   MyAgent.isHistory.toString()
+   * );
+   * ```
+   */
+  static isHistory(element: Element | null): boolean {
+    if (!element) return false;
+
+    let current: Element | null = element;
+    while (current && current !== document.body) {
+      if (
+        current.className &&
+        typeof current.className === "string" &&
+        current.className.includes("historyWrapper")
+      ) {
+        return true; // 在 historyWrapper 中，是历史消息
+      }
+      current = current.parentElement;
+    }
+    return false; // 不在 historyWrapper 中，不是历史消息
+  }
+
+  /**
+   * 判断元素是否在预加载历史容器中（即在 preloadList 容器内）
+   * 此函数设计用于在 page.evaluate() 中使用
+   *
+   * @example
+   * ```typescript
+   * const result = await page.evaluate(
+   *   (isPreLoadHistoryFn) => {
+   *     const isPreLoadHistory = new Function(`return (${isPreLoadHistoryFn})`)();
+   *     const element = document.querySelector('.message');
+   *     return isPreLoadHistory(element);
+   *   },
+   *   MyAgent.isPreLoadHistory.toString()
+   * );
+   * ```
+   */
+  static isPreLoadHistory(element: Element | null): boolean {
+    if (!element) return false;
+
+    let current: Element | null = element;
+    while (current && current !== document.body) {
+      if (
+        current.className &&
+        typeof current.className === "string" &&
+        current.className.includes("preloadList")
+      ) {
+        return true; // 在 preloadList 中，是预加载历史
+      }
+      current = current.parentElement;
+    }
+    return false; // 不在 preloadList 中，不是预加载历史
+  }
+
   constructor(page: Page, options: MyAgentOptions = {}) {
     this.page = page;
     this.inputSelectors = options.inputSelectors || MyAgent.DEFAULT_SELECTORS;
@@ -38,8 +142,75 @@ export class MyAgent {
    * 设置自定义输入框选择器
    * @param selectors 选择器数组
    */
-  setSelectors(selectors: string[]): void {
+  setInputSelectors(selectors: string[]): void {
     this.inputSelectors = selectors;
+  }
+
+  /**
+   * 检查元素是否是聊天消息（不在 preloadList 和 historyWrapper 中）
+   * @param locator 要检查的元素定位器
+   * @returns 是否是聊天消息
+   */
+  async isChatMsgElement(locator: Locator): Promise<boolean> {
+    return await locator.evaluate((el) => {
+      let current: Element | null = el;
+      while (current && current !== document.body) {
+        if (current.className && typeof current.className === "string") {
+          if (
+            current.className.includes("preloadList") ||
+            current.className.includes("historyWrapper")
+          ) {
+            return false;
+          }
+        }
+        current = current.parentElement;
+      }
+      return true;
+    });
+  }
+
+  /**
+   * 检查元素是否在历史消息容器中
+   * @param locator 要检查的元素定位器
+   * @returns 是否在历史消息容器中
+   */
+  async isHistoryElement(locator: Locator): Promise<boolean> {
+    return await locator.evaluate((el) => {
+      let current: Element | null = el;
+      while (current && current !== document.body) {
+        if (
+          current.className &&
+          typeof current.className === "string" &&
+          current.className.includes("historyWrapper")
+        ) {
+          return true;
+        }
+        current = current.parentElement;
+      }
+      return false;
+    });
+  }
+
+  /**
+   * 检查元素是否在预加载历史容器中
+   * @param locator 要检查的元素定位器
+   * @returns 是否在预加载历史容器中
+   */
+  async isPreLoadHistoryElement(locator: Locator): Promise<boolean> {
+    return await locator.evaluate((el) => {
+      let current: Element | null = el;
+      while (current && current !== document.body) {
+        if (
+          current.className &&
+          typeof current.className === "string" &&
+          current.className.includes("preloadList")
+        ) {
+          return true;
+        }
+        current = current.parentElement;
+      }
+      return false;
+    });
   }
 
   /**

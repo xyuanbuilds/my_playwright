@@ -20,7 +20,7 @@ const { domains } = domainsData;
  */
 test.describe("智能体基础测试", () => {
   domains.forEach((domain) => {
-    test("访问并截图", async ({ page }) => {
+    test(`访问并截图 - ${domain.name}`, async ({ page }) => {
       console.log(`测试域: ${domain?.name}`);
       console.log(`URL: ${domain.url}`);
 
@@ -59,7 +59,7 @@ test.describe("智能体基础测试", () => {
       console.log("页面加载完成");
     });
 
-    test("URL 参数验证", async ({ urlQuery, page }) => {
+    test(`URL 参数验证 - ${domain.name}`, async ({ urlQuery, page }) => {
       // 访问文旅页面
       await page.goto(domain.url);
 
