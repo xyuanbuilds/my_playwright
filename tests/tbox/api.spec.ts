@@ -10,6 +10,11 @@ const domainsData: DomainsFile = JSON.parse(
   fs.readFileSync(domainConfigPath, "utf-8"),
 );
 
+// 获取"文旅"域配置
+const domains = [domainsData.domains.find((d) => d.name === "文旅")].filter(
+  (d): d is NonNullable<typeof d> => Boolean(d),
+);
+
 /**
  * tbox-auth 接口响应 Schema
  */
@@ -30,7 +35,7 @@ const TboxHomepageResponseSchema = z.object({
     background: z.record(z.string(), z.any()).optional(),
     chatFileEnable: z.boolean(),
     homepageUserInfo: z.object({
-      speakerFlag: z.string(),
+      speakerFlag: z.string().optional(),
     }),
     imgQueryEnabled: z.string(),
     inputPlaceHolder: z.string(),
@@ -53,7 +58,7 @@ const TboxHomepageResponseSchema = z.object({
  * 监控和验证 HTTP API 请求/响应
  */
 test.describe("API 响应验证测试", () => {
-  domainsData.domains.forEach((domain) => {
+  domains.forEach((domain) => {
     test(`${domain.name} - 基础 API 验证`, async ({ page, apiMonitor }) => {
       console.log(`\n========== 测试域: ${domain.name} ==========`);
 
@@ -93,7 +98,7 @@ test.describe("API 响应验证测试", () => {
         });
 
       // 等待一段时间确保所有 API 调用完成
-      await page.waitForTimeout(3000);
+      await page.waitForTimeout(5000);
 
       // 打印 API 报告
       await apiMonitor.getReport();

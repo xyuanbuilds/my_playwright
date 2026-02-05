@@ -156,9 +156,14 @@ export class ApiMonitor {
       try {
         config.responseSchema.parse(body);
       } catch (error) {
-        if (error instanceof z.ZodError) {
+        if (error instanceof z.ZodError && error.errors) {
           errors.push(
             `Schema validation failed: ${error.errors.map((e) => `${e.path.join(".")}: ${e.message}`).join(", ")}`
+          );
+        } else if (error instanceof z.ZodError && error.issues) {
+          // ZodError 的 issues 属性（errors 是 issues 的别名）
+          errors.push(
+            `Schema validation failed: ${error.issues.map((e) => `${e.path.join(".")}: ${e.message}`).join(", ")}`
           );
         } else {
           errors.push(`Schema validation error: ${error}`);

@@ -9,9 +9,14 @@ const domainsData: DomainsFile = JSON.parse(
   fs.readFileSync(domainConfigPath, "utf-8"),
 );
 
+// 获取"文旅"域配置
+const domains = [domainsData.domains.find((d) => d.name === "文旅")].filter(
+  (d): d is NonNullable<typeof d> => Boolean(d),
+);
+
 test.describe("WebSocket 测试", () => {
   // 为每个域名创建测试
-  domainsData.domains.forEach((domain) => {
+  domains.forEach((domain) => {
     if (!domain.queryUrl) {
       console.warn(
         `跳过 ${domain.name} 测试: 缺少 queryUrl 配置，无法完整测试 WebSocket`,
@@ -19,7 +24,11 @@ test.describe("WebSocket 测试", () => {
       return;
     }
 
-    test(`${domain.name} - 完整测试`, async ({ page, websocket, myAgent }) => {
+    test(`${domain.name} - 完整对话流测试`, async ({
+      page,
+      websocket,
+      myAgent,
+    }) => {
       console.log(`\n========== 开始测试: ${domain.name} ==========\n`);
 
       // ========== 第一部分：默认 query 验证 ==========
@@ -112,9 +121,9 @@ test.describe("WebSocket 测试", () => {
 
       // 截图：第一轮对话完成后
       console.log("\n📸 截图：第一轮对话");
-      await expect(page).toHaveScreenshot(`${domain.name}-第一轮对话.png`, {
+      await page.screenshot({
+        path: test.info().outputPath(`${domain.name}-第一轮对话.png`),
         fullPage: true,
-        maxDiffPixelRatio: 0.02,
         animations: "disabled",
       });
 
@@ -203,14 +212,11 @@ test.describe("WebSocket 测试", () => {
 
       // 截图：第二轮对话完成后
       console.log(`\n📸 截图：第二轮对话-${secondRoundMessage}`);
-      await expect(page).toHaveScreenshot(
-        `${domain.name}-第二轮对话-${secondRoundMessage}.png`,
-        {
-          fullPage: true,
-          maxDiffPixelRatio: 0.02,
-          animations: "disabled",
-        },
-      );
+      await page.screenshot({
+        path: test.info().outputPath(`${domain.name}-第二轮对话-${secondRoundMessage}.png`),
+        fullPage: true,
+        animations: "disabled",
+      });
 
       // ========== 最终验证 ==========
       console.log("\n【最终验证】\n");

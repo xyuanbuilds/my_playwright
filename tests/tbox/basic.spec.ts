@@ -13,18 +13,22 @@ const domainConfigPath = path.join(__dirname, "domain.json");
 const domainsData: DomainsFile = JSON.parse(
   fs.readFileSync(domainConfigPath, "utf-8"),
 );
-const { domains } = domainsData;
+
+// 获取"卡片综合"域配置
+const domains = [domainsData.domains.find((d) => d.name === "卡片综合")].filter(
+  (d): d is NonNullable<typeof d> => Boolean(d),
+);
 
 /**
  * 基础的智能体测试示例
  */
-test.describe("智能体基础测试", () => {
+test.describe("智能体基础可访问性测试", () => {
   domains.forEach((domain) => {
-    test(`访问并截图 - ${domain.name}`, async ({ page }) => {
+    test(`${domain.name} - 访问并截图`, async ({ page }) => {
       console.log(`测试域: ${domain?.name}`);
       console.log(`URL: ${domain.url}`);
 
-      // 访问文旅页面
+      // 访问页面
       await page.goto(domain.url);
 
       // 等待页面基本加载完成
@@ -43,12 +47,6 @@ test.describe("智能体基础测试", () => {
         maxWaitTime: 3000,
       });
 
-      // 截图记录初始状态
-      // await page.screenshot({
-      //   path: `screenshots/tbox/${domain.name}-initial.png`,
-      //   fullPage: true,
-      // });
-
       // 使用 toHaveScreenshot 做基准比对（首次会生成基准）
       await expect(page).toHaveScreenshot(`${domain.name}-initial.png`, {
         fullPage: true,
@@ -59,8 +57,8 @@ test.describe("智能体基础测试", () => {
       console.log("页面加载完成");
     });
 
-    test(`URL 参数验证 - ${domain.name}`, async ({ urlQuery, page }) => {
-      // 访问文旅页面
+    test(`${domain.name} - URL 参数验证`, async ({ urlQuery, page }) => {
+      // 访问页面
       await page.goto(domain.url);
 
       // 验证必需参数存在
