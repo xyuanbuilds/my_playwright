@@ -1,4 +1,6 @@
 import { test as base } from "@playwright/test";
+import fs from "fs";
+import util from "util";
 import { URLQueryChecker } from "./helpers/url-query-checker";
 import { PerformanceMonitor } from "./helpers/performance-monitor";
 import { WebSocketMonitor } from "./helpers/websocket-monitor";
@@ -47,10 +49,41 @@ type CustomFixtures = {
   myAgent: MyAgent;
 };
 
+type AutoFixtures = {
+  /** 自动为每个用例隔离 console.log 日志 */
+  _consoleCapture: void;
+};
+
 /**
  * 扩展 Playwright 的 test 对象，添加自定义 fixtures
  */
-export const test = base.extend<CustomFixtures>({
+export const test = base.extend<CustomFixtures & AutoFixtures>({
+  /**
+   * 自动捕获每个用例的 console.log，写入独立文件并保持原始 stdout 输出
+   */
+  _consoleCapture: [
+    async ({}, use, testInfo) => {
+      const originalLog = console.log;
+      const logPath = testInfo.outputPath("log");
+      const stream = fs.createWriteStream(logPath, { flags: "a" });
+
+      console.log = (...args: unknown[]) => {
+        const formatted = util.format(...args);
+        const line = `[${new Date().toISOString()}] [${testInfo.title}] ${formatted}`;
+        stream.write(`${line}\n`);
+        originalLog(...args);
+      };
+
+      try {
+        await use();
+      } finally {
+        console.log = originalLog;
+        stream.end();
+      }
+    },
+    { auto: true },
+  ],
+
   /**
    * URL Query 检测器 Fixture
    */
