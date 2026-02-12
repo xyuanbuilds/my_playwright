@@ -1,14 +1,10 @@
 import { test, expect } from "../fixtures";
 import type { DomainsFile } from "./type";
-import * as fs from "fs";
-import * as path from "path";
 import { z } from "zod";
+import { loadDomains } from "./loadDomains";
 
-// 读取 domain.json 配置文件
-const domainConfigPath = path.join(__dirname, "domain.json");
-const domainsData: DomainsFile = JSON.parse(
-  fs.readFileSync(domainConfigPath, "utf-8"),
-);
+// 读取 domain.json 配置文件（支持通过环境变量覆盖）
+const domainsData: DomainsFile = loadDomains();
 
 // 获取"文旅"域配置
 const domains = [domainsData.domains.find((d) => d.name === "文旅")].filter(
@@ -91,11 +87,11 @@ test.describe("API 响应验证测试", () => {
       });
 
       // 等待网络请求完成
-      await page
-        .waitForLoadState("networkidle", { timeout: 30000 })
-        .catch(() => {
-          console.log("网络未完全空闲，继续执行测试");
-        });
+      // await page
+      //   .waitForLoadState("networkidle", { timeout: 30000 })
+      //   .catch(() => {
+      //     console.log("网络未完全空闲，继续执行测试");
+      //   });
 
       // 等待一段时间确保所有 API 调用完成
       await page.waitForTimeout(5000);

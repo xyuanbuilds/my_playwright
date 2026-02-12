@@ -1,5 +1,3 @@
-import * as fs from "fs";
-import * as path from "path";
 import {
   test,
   expect,
@@ -7,12 +5,10 @@ import {
   waitForUIStableWithLog,
 } from "../fixtures";
 import { DomainsFile } from "./type";
+import { loadDomains } from "./loadDomains";
 
-// 读取 domain.json 配置文件
-const domainConfigPath = path.join(__dirname, "domain.json");
-const domainsData: DomainsFile = JSON.parse(
-  fs.readFileSync(domainConfigPath, "utf-8"),
-);
+// 读取 domain.json 配置文件（支持通过环境变量覆盖）
+const domainsData: DomainsFile = loadDomains();
 
 // 获取"卡片综合"域配置
 const domains = [domainsData.domains.find((d) => d.name === "卡片综合")].filter(

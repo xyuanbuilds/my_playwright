@@ -6,14 +6,10 @@ import {
   waitForUIStable,
 } from "../fixtures";
 import type { DomainsFile } from "./type";
-import * as fs from "fs";
-import * as path from "path";
+import { loadDomains } from "./loadDomains";
 
-// 读取 domain.json 配置文件
-const domainConfigPath = path.join(__dirname, "domain.json");
-const domainsData: DomainsFile = JSON.parse(
-  fs.readFileSync(domainConfigPath, "utf-8"),
-);
+// 读取 domain.json 配置文件（支持通过环境变量覆盖）
+const domainsData: DomainsFile = loadDomains();
 
 const cardTestDomain = domainsData.domains.find(
   (domain) => domain.name === "卡片综合",

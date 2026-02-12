@@ -1,15 +1,11 @@
 import { test, waitForUIStableWithLog } from "../../fixtures";
-import type { DomainsFile } from "../type";
 import type { Page } from "@playwright/test";
 import type { MyAgent } from "../../fixtures/helpers/my-agent";
-import * as fs from "fs";
-import * as path from "path";
+import { loadDomains } from "../loadDomains";
+import type { DomainsFile } from "../type";
 
-// 读取 domain.json 配置文件
-const domainConfigPath = path.join(__dirname, "../domain.json");
-const domainsData: DomainsFile = JSON.parse(
-  fs.readFileSync(domainConfigPath, "utf-8"),
-);
+// 读取 domain.json 配置文件（支持通过环境变量覆盖）
+const domainsData: DomainsFile = loadDomains();
 
 // 获取"卡片综合"域配置
 const cardDomain = domainsData.domains.find((d) => d.name === "卡片综合");
@@ -41,7 +37,7 @@ async function triggerCard(page: Page, myAgent: MyAgent, cardType: CardType) {
  * 测试不同卡片类型的拨打电话功能
  */
 test.describe("makePhoneCall - 拨打电话", () => {
-  test.describe.configure({ mode: "serial" });
+  // test.describe.configure({ mode: "serial" });
 
   CARD_TYPES.forEach((cardType) => {
     test(`${cardType} - makePhoneCall 功能`, async ({ page, myAgent }) => {

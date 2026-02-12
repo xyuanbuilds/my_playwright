@@ -1,13 +1,9 @@
 import { test, expect, waitForUIStableWithLog } from "../fixtures";
 import type { DomainsFile } from "./type";
-import * as fs from "fs";
-import * as path from "path";
+import { loadDomains } from "./loadDomains";
 
-// 读取 domain.json 配置文件
-const domainConfigPath = path.join(__dirname, "domain.json");
-const domainsData: DomainsFile = JSON.parse(
-  fs.readFileSync(domainConfigPath, "utf-8"),
-);
+// 读取 domain.json 配置文件（支持通过环境变量覆盖）
+const domainsData: DomainsFile = loadDomains();
 
 // 获取"文旅"域配置
 const domains = [domainsData.domains.find((d) => d.name === "文旅")].filter(
@@ -213,7 +209,9 @@ test.describe("WebSocket 测试", () => {
       // 截图：第二轮对话完成后
       console.log(`\n📸 截图：第二轮对话-${secondRoundMessage}`);
       await page.screenshot({
-        path: test.info().outputPath(`${domain.name}-第二轮对话-${secondRoundMessage}.png`),
+        path: test
+          .info()
+          .outputPath(`${domain.name}-第二轮对话-${secondRoundMessage}.png`),
         fullPage: true,
         animations: "disabled",
       });
